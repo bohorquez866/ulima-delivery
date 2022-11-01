@@ -1,0 +1,163 @@
+.part {
+    margin: 10px;
+    padding: 10px 5px;
+    border: 3px solid #ff5050;
+    border-radius: 20px;
+    font-weight: 300;
+    max-height: 50px;
+}
+
+.img_fantasma {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.img_fantasma > h3 {
+    align-self: flex-start;
+    margin: 10px;
+}
+
+.img_fantasma  > img { 
+    width: 95%;
+    height: auto;
+}
+
+.solutions {
+    display: flex;
+    align-items: flex-end;
+}
+
+.float {
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:60px;
+	right: 40px;
+	background-color: #0466c8;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+}
+
+.float > h2 {
+    text-decoration: none !important;
+    color: white;
+    font-weight: 400;
+}
+
+.float:hover {
+    background-color: #0466c8d5;
+}
+
+/* .my-float {
+	margin-top: 5%;
+} */
+
+.float span {
+    background-color: #333;
+    color: white;
+    position: absolute;
+    border-radius: 50px;
+    left: 40%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    font-size: 10px;
+    min-width: 140px;
+    padding: 8px 12px;
+    top: -60px;
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+    opacity: 0; /* to hide it but still there*/
+    border: none !important;
+}
+.float span::before{
+    content: "";
+    border: none;
+    position: absolute;
+    bottom: -20px ;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+
+}
+    .float:hover {
+        overflow: visible;
+    }
+
+    .float:hover span {
+        display: inline;
+        opacity: 1;
+    }
+
+.tag_for_space {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+    .tag_for_space > h3 {
+        font-weight: 500;
+    }
+
+/* Indicador de columnas y filas Pregunta 6 */
+.indicador_superior {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding-left: 55px;
+}
+
+.indicador_superior > p {
+    margin-left: 50px;
+    margin-right: 50px;
+    font-size: 18px;
+}
+
+.indicador_lateral {
+    display: flex;
+}
+
+.indicador_filas > p {
+    font-size: 18px;
+    padding-right: 10px;
+}
+
+.indicador_filas > .fila_1 {
+    margin-top: 65px;
+}
+
+.indicador_filas > .fila_2 {
+    margin-top: 130px;
+}
+
+.indicador_filas > .fila_3 {
+    margin-top: 130px;
+}
+
+.col_for_margin {
+    margin-left: 20px;
+}
+
+.choose {
+    display: flex;
+}
+
+.btn_final_options {
+    display: flex;
+    flex-direction: column;
+}
