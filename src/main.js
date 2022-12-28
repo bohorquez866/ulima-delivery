@@ -7,9 +7,12 @@ import VueKonva from "vue-konva";
 import VueDraggableResizable from "vue-draggable-resizable";
 import "vue-draggable-resizable/dist/VueDraggableResizable.css";
 
+import excel from 'vue-excel-export'
+
 Vue.component("vue-draggable-resizable", VueDraggableResizable);
 Vue.use(VueMeta)
 Vue.use(VueKonva);
+Vue.use(excel)
 
 new Vue({
   vuetify,
