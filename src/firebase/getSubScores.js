@@ -134,26 +134,25 @@ export async function setSub02(item) {
     '2b': 1,
     '2c': 0
   };
-  // const docRef = doc(db, "users", item_id);
-  // const docSnap = await getDoc(docRef);
-  // const data = docSnap.get('data')
+  const docRef = doc(db, "users", item);
+  const docSnap = await getDoc(docRef);
+  const data = docSnap.get('data')
+
   // var borrador = 0
   // var solucion = 0
 
   /////////////// get 1a
   try {
-    console.log('')
+  const pregunta1 = data['pregunta1']
+  
+    console.log(pregunta1)
   
   
-} catch(error){
-
+  }catch(error){
   await updateDoc(doc(db, "subs", item), {
     sub02: dict
   });
-  console.log('')
 }
-
-
 await updateDoc(doc(db, "users", item), {
   process: true
 });
@@ -784,6 +783,36 @@ export async function getSubData(user){
   }
   return preguntas;
   
+}
+
+export async function sumTotalResults(item){
+  const docRef = doc(db, "subs", item);
+  const docSnap = await getDoc(docRef);
+  // const sub01 = docSnap.get('sub01') 
+  const arrSubs = [
+    'sub01',
+    'sub02',
+    'sub03',
+    'sub04',
+    'sub05',
+    'sub06',
+    'sub07',
+    'sub08',
+    'sub09',
+    'sub10',
+    'sub11',
+    'sub12',
+    'sub13',
+    'sub14'
+  ]
+
+
+arrSubs.forEach(element => {
+
+    console.log(element,': ', docSnap.get(element))
+  });
+
+  console.log('---------------------------------')
 }
 
 

@@ -1,7 +1,7 @@
 
 import { doc, getDoc, getDocs, collection, updateDoc } from "firebase/firestore";
 import { db, auth } from "../firebase/configFirebase";
-import { setSub01, setSub03, setSub04, setSub05, setSub06, setSub09, setSub10 } from "./getSubScores";
+import { setSub01, setSub02, setSub03, setSub04, setSub05, setSub06, setSub09, setSub10, sumTotalResults } from "./getSubScores";
 
 export async function getFirebaseData() {
   const userUid = auth.currentUser.uid;
@@ -48,12 +48,14 @@ export async function getListStudents() {
         console.log(typeof doc.data())
         setEmail(doc.id)
         setSub01(doc.id)
+        setSub02(doc.id)
         setSub03(doc.id)
         setSub04(doc.id)
         setSub05(doc.id)
         setSub06(doc.id)
         setSub09(doc.id)
         setSub10(doc.id)
+        sumTotalResults(doc.id)
       }
       
     }
