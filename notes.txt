@@ -1,0 +1,2 @@
+Notas a comentar,
+LOs metodos distintos en cada página para pasar la data

@@ -1,0 +1,103 @@
+.sup_box {
+  display: flex;
+  align-items: center;
+
+  height: 100%;
+}
+
+.form_box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  justify-content: center !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+}
+
+input {
+  background: #ccc;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  padding: 10px 20px 10px 20px;
+  margin: 10px;
+}
+
+.email_input {
+  width: 25rem;
+}
+
+.register_now {
+  background: white;
+}
+
+.check {
+  box-shadow: none;
+}
+
+.check-terms > p {
+  padding-top: 8px;
+  font-size: 12px;
+}
+
+.btn_model {
+  padding: 15px 25px 15px 25px !important;
+  border-radius: 10px;
+  background-color: #0466c8;
+  color: white;
+  font-size: 14px;
+}
+
+.right-box {
+  width: fit-content;
+  height: 100%;
+  background: #0466c8;
+  display: flex;
+  width: 50%;
+}
+.right-box .VueCarousel {
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  width: 100%;
+}
+
+.item {
+  display: flex;
+  /* height: 100vh !important; */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+.item > img {
+  border-radius: 10px;
+}
+
+.carousel-caption {
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  padding: 10px 20px 10px 20px;
+  margin: 10px;
+  max-width: 50%;
+}
+
+.errorMessage {
+  color: red;
+  margin-top: 20px;
+  background-color: transparent !important;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .right-box {
+    display: none;
+  }
+}

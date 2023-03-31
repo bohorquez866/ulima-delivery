@@ -1,0 +1,122 @@
+.superior_container {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.formulario {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+}
+
+input {
+  background: #f0f0f0;
+
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  /* padding: 10px 20px 10px 20px;
+    margin: 10px; */
+}
+
+textarea{
+  resize: none;
+}
+
+.edu {
+  width: 100%;
+}
+
+/* selects */
+
+.selections {
+  width: 100%;
+}
+
+.selections > p {
+  margin: 15px;
+}
+
+.selection_box {
+  display: flex;
+}
+
+.select {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 15px;
+  width: 100%;
+  margin: 10px;
+}
+.select select {
+  font-family: "Arial";
+  display: inline-block;
+  width: 100%;
+  cursor: pointer;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  color: #7b7b7b;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+.select select::-ms-expand {
+  display: none;
+}
+.select select:hover,
+.select select:focus {
+  color: #000000;
+  background: #cccccc;
+}
+.select select:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+.select_arrow {
+  position: absolute;
+  top: 18px;
+  right: 10px;
+  pointer-events: none;
+  border-style: solid;
+  border-width: 8px 5px 0px 5px;
+  border-color: #7b7b7b transparent transparent transparent;
+}
+.select select:hover ~ .select_arrow,
+.select select:focus ~ .select_arrow {
+  border-top-color: #000000;
+}
+.select select:disabled ~ .select_arrow {
+  border-top-color: #cccccc;
+}
+
+/* End selects */
+
+.check-terms {
+  display: flex;
+}
+
+.check-terms > p {
+  padding-top: 16px;
+  font-size: 12px;
+}
+
+.btn_model {
+  padding: 15px 25px 15px 25px !important;
+  margin: 10px;
+  border-radius: 10px;
+  background-color: #0466c8;
+  color: white;
+  font-size: 14px;
+}
