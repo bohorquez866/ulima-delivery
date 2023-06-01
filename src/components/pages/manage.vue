@@ -40,7 +40,6 @@
                 }, [])
               "
               :fields="{ email: 'email', ...subs }"
-              type="csv"
               name="filename.xls"
             >
               Download Data

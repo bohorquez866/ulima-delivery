@@ -28,7 +28,7 @@
           :scrollPerPage="true"
         >
           <slide v-for="question in questions" :key="question">
-            <div class="question__container">
+            <div v-if="student.grades[question] && student.data[question]" class="question__container">
               <h4>{{ question }}</h4>
               <div class="input">
                 <div>
@@ -66,7 +66,7 @@
           :scrollPerPage="true"
         >
           <slide v-for="question in questions.slice(1)" :key="question">
-            <div class="question__container question__container-base">
+            <div v-if="student.grades[question] && student.data[question]" class="question__container question__container-base">
               <h4>{{ question }}</h4>
               <div class="input">
                 <div>
@@ -101,7 +101,7 @@
           :scrollPerPage="true"
         >
           <slide v-for="question in [questions[3], questions[4]]" :key="question">
-            <div class="question__container question__container-base">
+            <div v-if="student.grades[question] && student.data[question]" class="question__container question__container-base">
               <h4>{{ question }}</h4>
               <div class="input">
                 <div>
