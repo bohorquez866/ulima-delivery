@@ -5,8 +5,11 @@
   align-items: center;
 }
 
-.formulario {
+.superior_container .formulario {
+  width: 750px;
   padding: 25px;
+  padding-bottom: 5px;
+  padding-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,10 +32,6 @@ input {
 
 textarea{
   resize: none;
-}
-
-.edu {
-  width: 100%;
 }
 
 /* selects */
@@ -108,8 +107,8 @@ textarea{
 }
 
 .check-terms > p {
-  padding-top: 16px;
   font-size: 12px;
+  margin-bottom: 0;
 }
 
 .btn_model {
@@ -119,4 +118,24 @@ textarea{
   background-color: #0466c8;
   color: white;
   font-size: 14px;
+}
+
+.superior_container .select_div {
+  display: flex;
+  width: 100%;
+}
+.superior_container .names_div {
+  display: flex;
+  width: 100%;
+}
+.superior_container .names_div > * {
+  flex-grow: 1;
+}
+
+.superior_container input:not([type=checkbox]) {
+  width: calc(100% - 15px);
+}
+
+.superior_container .definition {
+  font-size: 0.8rem;
 }

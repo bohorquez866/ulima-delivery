@@ -8,8 +8,8 @@
         <div class="over_vin">
           <img class="vineta" src="../../assets/Circle_Grey_Solid.svg" />
         </div>
-        El test está compuesto por 2 escenarios con 3 preguntas en cada uno de
-        ellos. Las preguntas 5 y 6 están divididas en partes.
+        El test está compuesto por 2 escenarios con 6 preguntas en total. La
+        pregunta 5 se divide en 2 partes, y la pregunta 6, en 3 partes.
       </li>
 
       <li>
@@ -24,7 +24,8 @@
         <div class="over_vin">
           <img class="vineta" src="../../assets/Circle_Grey_Solid.svg" />
         </div>
-        Recuerda: Siempre que finalices una pregunta, deberás
+        <span :style="{ color: 'red' }">Recuerda: &nbsp;</span> Siempre que
+        finalices una pregunta, deberás
         <strong>&nbsp;guardar la solución&nbsp;</strong> para pasar a la
         siguiente.
       </li>
@@ -33,16 +34,17 @@
         <div class="over_vin">
           <img class="vineta" src="../../assets/Circle_Grey_Solid.svg" />
         </div>
-        Una vez dado siguiente, ya no podrás regresar a la pregunta anterior.
+        Una vez dado click en <strong>&nbsp;Siguiente&nbsp;</strong> , ya no
+        podrás regresar a la pregunta anterior.
       </li>
 
       <li>
         <div class="over_vin">
           <img class="vineta" src="../../assets/Circle_Grey_Solid.svg" />
         </div>
-        Todas las preguntas tienen una opción de respuesta
-        <strong>&nbsp;abierta&nbsp;</strong> en donde podrás completar con un
-        párrafo de texto.
+        Todas las preguntas tienen una
+        <strong>&nbsp;opción de respuesta abierta&nbsp;</strong> en donde
+        tendrán que escribir sus respuestas, de acuerdo con lo solicitado.
       </li>
 
       <li>
@@ -69,6 +71,15 @@
         Antes de comenzar el test, vamos a ver los
         <strong>&nbsp;3 Avisos de Respuesta&nbsp;</strong> para que te
         familiarices con la manera de cómo responder las preguntas.
+      </li>
+      <li>
+        <div class="over_vin special_item">
+          <img class="vineta" src="../../assets/Circle_Grey_Solid.svg" />
+        </div>
+        <i :style="{ color: 'red' }">
+          Cada pregunta tiene un video que te explica cómo responder
+          correctamente la pregunta. ¡Te recomendamos verlo antes de iniciar!
+        </i>
       </li>
     </div>
 

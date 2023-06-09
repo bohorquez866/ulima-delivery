@@ -11,7 +11,7 @@
     </form>
 
     <div class="right-box">
-      <carousel :perPage="1" autoPlay :autoplayTimeout="5000">
+      <carousel :perPage="1" :autoplay="true" :autoplayTimeout="6000">
         <Slide class="item">
           <img
             src="../../assets/03_Login/i01.jpg"
