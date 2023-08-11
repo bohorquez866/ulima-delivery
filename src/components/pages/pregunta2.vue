@@ -366,7 +366,7 @@ export default {
       targets: generateTargets(),
       connections: [],
       soluciones: [],
-      drawningLine: false,
+      drawingLine: false,
       conexiones: [],
       errores: [],
       contS: 0,
@@ -460,7 +460,7 @@ export default {
         return;
       }
 
-      this.drawningLine = true;
+      this.drawingLine = true;
       this.tiempoIN = Date.now();
       this.connections.push({
         id: Date.now(),
@@ -472,7 +472,7 @@ export default {
       if (!this.inicio) {
         return;
       }
-      if (!this.drawningLine) {
+      if (!this.drawingLine) {
         return;
       }
       const pos = e.target.getStage().getPointerPosition();
@@ -498,7 +498,7 @@ export default {
       }
       var condic = this.validateConnections(this.t1.con, this.t2);
 
-      this.drawningLine = false;
+      this.drawingLine = false;
       const lastLine = this.connections[this.connections.length - 1];
       var peso = this.getWeights(this.t1.con, this.t2);
 

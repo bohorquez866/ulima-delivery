@@ -322,7 +322,7 @@ export default {
       targets: generateTargets(),
       connections: [],
       soluciones: [],
-      drawningLine: false,
+      drawingLine: false,
       conexiones: [],
       errores: [],
       contS: 0,
@@ -411,12 +411,12 @@ export default {
     },
     handleMouseDown(e) {
       const onCircle = e.target instanceof Konva.Circle;
-      console.log(onCircle);
       if (!onCircle) {
         return;
       }
 
       var circ = this.getCircle(e.target.x(), e.target.y());
+
       this.t1 = circ;
       if (this.t1.id == 111 && this.fin == false && this.validarT == true) {
         this.inicio = true;
@@ -426,7 +426,7 @@ export default {
         return;
       }
 
-      this.drawningLine = true;
+      this.drawingLine = true;
       this.tiempoIN = Date.now();
       this.connections.push({
         id: Date.now(),
@@ -438,7 +438,7 @@ export default {
       if (!this.inicio) {
         return;
       }
-      if (!this.drawningLine) {
+      if (!this.drawingLine) {
         return;
       }
       const pos = e.target.getStage().getPointerPosition();
@@ -464,7 +464,7 @@ export default {
       }
       var condic = this.validateConnections(this.t1.con, this.t2);
 
-      this.drawningLine = false;
+      this.drawingLine = false;
       const lastLine = this.connections[this.connections.length - 1];
       var peso = this.getWeights(this.t1.con, this.t2);
 
@@ -481,7 +481,6 @@ export default {
           p2: this.t2,
           peso: peso,
         });
-        console.log(this.conexiones);
         this.tiempoFN = Date.now();
         this.tiempoTN = this.tiempoFN - this.tiempoIN;
         this.pesos.push(peso);
@@ -501,11 +500,17 @@ export default {
       this.validarT = false;
     },
 
-    validarPeso() {
-      if (this.peso === 21) {
-        return 'T';
+    validarPeso() { // TODO: REVISAR QUE SALGA TRUE. SUMAR LOS PESOS DEL ARRAY DE CONEXIONES (IGUAL EN LA 2)
+      // if (this.peso === 21) {
+      //   return 'T';
+      // }
+      // return 'F';
+      let totalWeight = 0;
+      for (let i = 0; i < this.conexiones.length; i++) {
+        const element = this.conexiones[i];
+        totalWeight += element.peso;
       }
-      return 'F';
+      return totalWeight;
     },
     validarNodoFinal() {
       if (this.conexiones.at(-1)?.p2 == 112) {
@@ -549,11 +554,8 @@ export default {
       // INSERTAR FUNCIÓN NUEVA FIREBASE
       let resultados = this.respuestas;
       const data = { pregunta1: resultados };
-      console.log(data);
 
       saveFirebaseData(data);
-
-      // console.log(event);
 
       alert('Se guardo la solucion. Presionar siguiente');
     },
@@ -654,7 +656,6 @@ export default {
         parte: 1,
         condicional: '-',
       });
-      console.log(this.respuestas);
       this.contador += 1;
       this.contS += 1;
       this.soluciones.push({
@@ -670,7 +671,6 @@ export default {
       this.cleanRoute();
       this.validarT = true;
       this.tiempoI = Date.now();
-      console.log(new Date(this.tiempoI));
     },
     cleanRoute() {
       this.connections = [];
