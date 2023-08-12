@@ -46,6 +46,7 @@
               :config="{
                 stroke: line.color,
                 points: line.points,
+                strokeWidth: 3,
               }"
             />
 
@@ -316,61 +317,35 @@ const { GoogleSpreadsheet } = require('google-spreadsheet');
   await doc.loadInfo();
 })();
 
+const colors = {
+  1: 'black',
+  3: 'green',
+  5: 'yellow',
+  10: 'red',
+}
+
 function generateTargets() {
-  const circles = [
-    { x: 200, y: 50, id: 112, color: '#1976D2', con: { 3: 5 } },
-    {
-      x: 400,
-      y: 100,
-      id: 2,
-      color: '#3CCF4E',
-      con: { 112: 10, 3: 1, 5: 1, 6: 3 },
-    },
-    {
-      x: 600,
-      y: 100,
-      id: 3,
-      color: '#3CCF4E',
-      con: { 112: 5, 2: 1, 4: 1, 10: 10 },
-    },
-    { x: 800, y: 100, id: 4, color: '#3CCF4E', con: { 3: 1, 7: 3, 9: 5 } },
-    { x: 300, y: 250, id: 5, color: '#3CCF4E', con: { 112: 3, 2: 1, 8: 5 } },
-    { x: 450, y: 250, id: 6, color: '#FEDB39', con: { 2: 3, 3: 1, 5: 5 } },
-    {
-      x: 700,
-      y: 250,
-      id: 7,
-      color: '#3CCF4E',
-      con: { 3: 3, 4: 3, 9: 1, 10: 10 },
-    },
-    { x: 350, y: 400, id: 8, color: '#3CCF4E', con: { 5: 5, 6: 5, 10: 3 } },
-    {
-      x: 800,
-      y: 400,
-      id: 9,
-      color: '#3CCF4E',
-      con: { 4: 5, 7: 1, 10: 5, 11: 3 },
-    },
-    {
-      x: 600,
-      y: 550,
-      id: 10,
-      color: '#3CCF4E',
-      con: { 3: 10, 7: 10, 8: 5, 9: 5, 12: 3 },
-    },
-    { x: 800, y: 550, id: 11, color: '#3CCF4E', con: { 9: 3, 111: 10 } },
-    { x: 350, y: 700, id: 12, color: '#3CCF4E', con: { 8: 10, 10: 3, 14: 1 } },
-    {
-      x: 800,
-      y: 700,
-      id: 111,
-      color: '#EB1D36',
-      con: { 10: 10, 11: 10, 12: 10, 15: 3 },
-    },
-    { x: 420, y: 850, id: 14, color: '#3CCF4E', con: { 10: 5, 13: 3, 14: 5 } },
-    { x: 600, y: 850, id: 15, color: '#3CCF4E', con: { 12: 1, 15: 5, 10: 5 } },
+  return [
+    // Blue
+    { x: 200, y: 100, id: 112, color: '#1976D2', con: { 3: 5 }, },
+    // Red
+    { x: 800, y: 700, id: 111, color: '#EB1D36', con: { 10: 10, 11: 10, 12: 10, 15: 3 }, },
+    // Yellow
+    { x: 450, y: 250, id: 6, color: '#FEDB39', con: { 2: 3, 3: 1, 5: 5 }, },
+    // Greens
+    { x: 400, y: 100, id: 2, color: '#3CCF4E', con: { 112: 10, 3: 1, 5: 1, 6: 3 }, },
+    { x: 600, y: 100, id: 3, color: '#3CCF4E', con: { 112: 5, 2: 1, 4: 1, 10: 10 }, },
+    { x: 800, y: 100, id: 4, color: '#3CCF4E', con: { 3: 1, 7: 3, 9: 5 }, },
+    { x: 300, y: 250, id: 5, color: '#3CCF4E', con: { 112: 3, 2: 1, 8: 5 }, },
+    { x: 700, y: 250, id: 7, color: '#3CCF4E', con: { 3: 3, 4: 3, 9: 1, 10: 10 }, },
+    { x: 350, y: 400, id: 8, color: '#3CCF4E', con: { 5: 5, 6: 5, 10: 3 }, },
+    { x: 800, y: 400, id: 9, color: '#3CCF4E', con: { 4: 5, 7: 1, 10: 5, 11: 3 }, },
+    { x: 600, y: 550, id: 10, color: '#3CCF4E', con: { 3: 10, 7: 10, 8: 5, 9: 5, 12: 3 }, },
+    { x: 800, y: 550, id: 11, color: '#3CCF4E', con: { 9: 3, 111: 10 }, },
+    { x: 350, y: 700, id: 12, color: '#3CCF4E', con: { 8: 10, 10: 3, 14: 1 }, },
+    { x: 420, y: 850, id: 14, color: '#3CCF4E', con: { 12: 1, 15: 5 }, },
+    { x: 600, y: 850, id: 15, color: '#3CCF4E', con: { 111: 3, 10: 5, 14: 5 }, },
   ];
-  return circles;
 }
 
 export default {
@@ -391,7 +366,7 @@ export default {
       targets: generateTargets(),
       connections: [],
       soluciones: [],
-      drawningLine: false,
+      drawingLine: false,
       conexiones: [],
       errores: [],
       contS: 0,
@@ -485,7 +460,7 @@ export default {
         return;
       }
 
-      this.drawningLine = true;
+      this.drawingLine = true;
       this.tiempoIN = Date.now();
       this.connections.push({
         id: Date.now(),
@@ -497,7 +472,7 @@ export default {
       if (!this.inicio) {
         return;
       }
-      if (!this.drawningLine) {
+      if (!this.drawingLine) {
         return;
       }
       const pos = e.target.getStage().getPointerPosition();
@@ -523,7 +498,7 @@ export default {
       }
       var condic = this.validateConnections(this.t1.con, this.t2);
 
-      this.drawningLine = false;
+      this.drawingLine = false;
       const lastLine = this.connections[this.connections.length - 1];
       var peso = this.getWeights(this.t1.con, this.t2);
 
@@ -533,7 +508,7 @@ export default {
           lastLine.points[1],
           e.target.x(),
           e.target.y(),
-          (lastLine.color = this.getColor(peso)),
+          (lastLine.color = colors[peso]),
         ];
         this.conexiones.push({
           p1: this.t1.id,
@@ -584,10 +559,11 @@ export default {
       this.connections = con;
     },
     validarPeso() {
-      if (this.peso === 24) {
-        return 'T';
+      let totalWeight = -Infinity;
+      for (let i = 0; i < this.conexiones.length; i++) {
+        totalWeight += this.conexiones[i].peso;
       }
-      return 'F';
+      return totalWeight === 24 ? 'T' : 'F';
     },
     getRuta() {
       var total = '111';
