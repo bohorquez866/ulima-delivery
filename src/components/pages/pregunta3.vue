@@ -543,15 +543,9 @@ export default {
       return 'F';
     },
     validarNodoFinal() {
-      // var cant = this.cantNodos
-      // cant -= 1
       if (this.conexiones.at(-1).p2 == 112) {
         return 'T';
       }
-      // if(cant == 2){
-      // return "T"
-      // }
-
       return 'F';
     },
     getRuta() {

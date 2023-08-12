@@ -500,17 +500,12 @@ export default {
       this.validarT = false;
     },
 
-    validarPeso() { // TODO: REVISAR QUE SALGA TRUE. SUMAR LOS PESOS DEL ARRAY DE CONEXIONES (IGUAL EN LA 2)
-      // if (this.peso === 21) {
-      //   return 'T';
-      // }
-      // return 'F';
-      let totalWeight = 0;
+    validarPeso() {
+      let totalWeight = -Infinity;
       for (let i = 0; i < this.conexiones.length; i++) {
-        const element = this.conexiones[i];
-        totalWeight += element.peso;
+        totalWeight += this.conexiones[i].peso;
       }
-      return totalWeight;
+      return totalWeight === 21 ? 'T' : 'F';
     },
     validarNodoFinal() {
       if (this.conexiones.at(-1)?.p2 == 112) {
