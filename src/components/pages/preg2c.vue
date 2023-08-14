@@ -49,7 +49,6 @@
           style="border-radius: 20px"
         >
           <vue-draggable-resizable
-            class="preg5-vdr"
             @dragging="onDrag"
             :x="40"
             :y="20"
@@ -63,7 +62,6 @@
             <img
               :src="b1"
               id="b1"
-              class="preg5-img"
               width="216"
               height="36.6"
               @mousedown="setId"
@@ -71,7 +69,6 @@
             />
           </vue-draggable-resizable>
           <vue-draggable-resizable
-            class="preg5-vdr"
             @dragging="onDrag"
             :x="40"
             :y="70"
@@ -85,7 +82,6 @@
             <img
               :src="b2"
               id="b2"
-              class="preg5-img"
               width="216"
               height="36.6"
               @mousedown="setId"
@@ -93,7 +89,6 @@
             />
           </vue-draggable-resizable>
           <vue-draggable-resizable
-            class="preg5-vdr"
             @dragging="onDrag"
             :x="40"
             :y="120"
@@ -107,7 +102,6 @@
             <img
               :src="b3"
               id="b3"
-              class="preg5-img"
               width="216"
               height="36.6"
               @mousedown="setId"
@@ -115,7 +109,6 @@
             />
           </vue-draggable-resizable>
           <vue-draggable-resizable
-            class="preg5-vdr"
             @dragging="onDrag"
             :x="40"
             :y="170"
@@ -129,7 +122,6 @@
             <img
               :src="b4"
               id="b4"
-              class="preg5-img"
               width="216"
               height="36.6"
               @mousedown="setId"
@@ -137,7 +129,6 @@
             />
           </vue-draggable-resizable>
           <vue-draggable-resizable
-            class="preg5-vdr"
             @dragging="onDrag"
             :x="40"
             :y="220"
@@ -151,7 +142,6 @@
             <img
               :src="b5"
               id="b5"
-              class="preg5-img"
               width="216"
               height="36.6"
               @mousedown="setId"
@@ -159,7 +149,6 @@
             />
           </vue-draggable-resizable>
           <vue-draggable-resizable
-            class="preg5-vdr"
             @dragging="onDrag"
             :x="40"
             :y="270"
@@ -173,7 +162,6 @@
             <img
               :src="b6"
               id="b6"
-              class="preg5-img"
               width="216"
               height="36.6"
               @mousedown="setId"
@@ -181,7 +169,6 @@
             />
           </vue-draggable-resizable>
           <vue-draggable-resizable
-            class="preg5-vdr"
             @dragging="onDrag"
             :x="40"
             :y="320"
@@ -195,7 +182,6 @@
             <img
               :src="b7"
               id="b7"
-              class="preg5-img"
               width="216"
               height="36.6"
               @mousedown="setId"
@@ -203,7 +189,6 @@
             />
           </vue-draggable-resizable>
           <vue-draggable-resizable
-            class="preg5-vdr"
             @dragging="onDrag"
             :x="40"
             :y="370"
@@ -217,7 +202,6 @@
             <img
               :src="b8"
               id="b8"
-              class="preg5-img"
               width="185.4"
               height="171.6"
               @mousedown="setId"
@@ -225,7 +209,6 @@
             />
           </vue-draggable-resizable>
           <vue-draggable-resizable
-            class="preg5-vdr"
             @dragging="onDrag"
             :x="250"
             :y="370"
@@ -239,7 +222,6 @@
             <img
               :src="b9"
               id="b9"
-              class="preg5-img"
               width="185.4"
               height="171.6"
               @mousedown="setId"
@@ -247,7 +229,6 @@
             />
           </vue-draggable-resizable>
           <vue-draggable-resizable
-            class="preg5-vdr"
             @dragging="onDrag"
             :x="40"
             :y="70"
@@ -261,7 +242,6 @@
             <img
               :src="b2"
               id="b2b"
-              class="preg5-img"
               width="216"
               height="36.6"
               @mousedown="setId"
@@ -376,61 +356,127 @@ function generateTargets() {
       y: 50,
       id: 1,
       color: 'green',
+      con: {
+        3: 5,
+      },
+      puntosBorde: [],
     },
     {
       x: 400,
       y: 50,
       id: 2,
       color: 'green',
+      con: {
+        112: 10,
+        3: 1,
+        5: 1,
+        6: 3,
+      },
+      puntosBorde: [],
     },
     {
       x: 600,
       y: 50,
       id: 3,
       color: 'yellow',
+      con: {
+        112: 5,
+        2: 1,
+        4: 1,
+        10: 10,
+      },
+      puntosBorde: [],
     },
     {
       x: 200,
       y: 200,
       id: 4,
       color: 'green',
+      con: {
+        3: 1,
+        7: 3,
+        9: 5,
+      },
+      puntosBorde: [],
     },
     {
       x: 400,
       y: 200,
       id: 112,
       color: 'blue',
+      con: {
+        112: 3,
+        2: 1,
+        8: 5,
+      },
+      puntosBorde: [],
     },
     {
       x: 600,
       y: 200,
       id: 6,
       color: 'green',
+      con: {
+        2: 3,
+        3: 1,
+        5: 5,
+      },
+      puntosBorde: [],
     },
     {
       x: 200,
       y: 350,
       id: 7,
       color: 'green',
+      con: {
+        3: 3,
+        4: 3,
+        9: 1,
+        10: 10,
+      },
+      puntosBorde: [],
     },
     {
       x: 400,
       y: 350,
       id: 8,
       color: 'green',
+      con: {
+        5: 5,
+        6: 5,
+        10: 3,
+      },
+      puntosBorde: [],
     },
     {
       x: 600,
       y: 350,
       id: 9,
       color: 'green',
+      con: {
+        5: 5,
+        6: 5,
+        10: 3,
+      },
+      puntosBorde: [],
     },
   ];
 
+  generarBordes(circles);
   // generarDiagonales()
   return circles;
 }
 
+function generarBordes(cirecle) {
+  cirecle.forEach((element) => {
+    element.puntosBorde.push({
+      up: [element.x, element.y - 40],
+      right: [element.x + 40, element.y],
+      down: [element.x, element.y + 40],
+      left: [element.x - 40, element.y],
+    });
+  });
+}
 export default {
   components: {
     modalThree,
@@ -457,6 +503,7 @@ export default {
         height: height,
       },
       connections: [],
+      drawningLine: false,
       image: require('@/assets/muestra.jpg'),
 
       b1: require('@/assets/Bloque01.png'),
@@ -472,8 +519,12 @@ export default {
       b9: require('@/assets/Bloque09.png'),
 
       respuestas: [],
+      circulo1: 0,
+      circulo2: 0,
       conexiones: [],
       ruta: [],
+      rutaMatriz: [],
+      rutaFantasma: [4, 112, 8, 112, 6, 112, 2, 112],
       contador: 0,
       rutaTemp: [],
       width: 0,
@@ -763,13 +814,11 @@ export default {
       this.y = y;
     },
     setId: function(event) {
-      console.log('setting id');
       this.tempAbajo = event.target.id;
       this.posiciones[event.target.id][0] = this.xtemp;
       this.posiciones[event.target.id][1] = this.ytemp;
     },
     setId2: function(event) {
-      console.log('setting id2');
       this.tempArriba = event.target.id;
       var element = document.getElementById('bloque2');
       var rect = element.getBoundingClientRect();
@@ -793,7 +842,7 @@ export default {
         this.posiciones[this.tempAbajo][1] = this.ytemp;
       }
     },
-    onDragStop: function(ev) {
+    onDragstop: function(ev) {
       this.xtemp = this.x;
       this.ytemp = this.y;
       return ev;
@@ -811,11 +860,4 @@ export default {
 <style>
 @import '../../assets/vistas_styles.css';
 @import '../../assets/pregs_styles.css';
-
-.preg5-img {
-  margin: 0;
-}
-.preg5-vdr {
-  border: none !important;
-}
 </style>
