@@ -559,10 +559,12 @@ export default {
       this.connections = con;
     },
     validarPeso() {
-      let totalWeight = -Infinity;
+      console.log('conexiones', this.conexiones.length);
+      let totalWeight = 0;
       for (let i = 0; i < this.conexiones.length; i++) {
         totalWeight += this.conexiones[i].peso;
       }
+      console.log('totalWeight', totalWeight);
       return totalWeight === 24 ? 'T' : 'F';
     },
     getRuta() {
