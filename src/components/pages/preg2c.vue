@@ -45,16 +45,17 @@
         <v-card
           width="500px"
           height="600px"
-          id="bloque2"
+          id="bloque1"
           style="border-radius: 20px"
         >
           <vue-draggable-resizable
+            class="preg2c-vdr"
             @dragging="onDrag"
             :x="40"
             :y="20"
             :z="1"
-            w="auto"
-            h="auto"
+            w="216"
+            h="36.6"
             @resizing="onResize"
             :resizable="false"
             @dragstop="onDragstop"
@@ -62,6 +63,7 @@
             <img
               :src="b1"
               id="b1"
+              class="preg2c-img"
               width="216"
               height="36.6"
               @mousedown="setId"
@@ -69,12 +71,13 @@
             />
           </vue-draggable-resizable>
           <vue-draggable-resizable
+            class="preg2c-vdr"
             @dragging="onDrag"
             :x="40"
             :y="70"
             :z="2"
-            w="auto"
-            h="auto"
+            w="216"
+            h="36.6"
             @resizing="onResize"
             :resizable="false"
             @dragstop="onDragstop"
@@ -82,6 +85,7 @@
             <img
               :src="b2"
               id="b2"
+              class="preg2c-img"
               width="216"
               height="36.6"
               @mousedown="setId"
@@ -89,12 +93,13 @@
             />
           </vue-draggable-resizable>
           <vue-draggable-resizable
+            class="preg2c-vdr"
             @dragging="onDrag"
             :x="40"
             :y="120"
             :z="3"
-            w="auto"
-            h="auto"
+            w="216"
+            h="36.6"
             @resizing="onResize"
             :resizable="false"
             @dragstop="onDragstop"
@@ -102,6 +107,7 @@
             <img
               :src="b3"
               id="b3"
+              class="preg2c-img"
               width="216"
               height="36.6"
               @mousedown="setId"
@@ -109,12 +115,13 @@
             />
           </vue-draggable-resizable>
           <vue-draggable-resizable
+            class="preg2c-vdr"
             @dragging="onDrag"
             :x="40"
             :y="170"
             :z="4"
-            w="auto"
-            h="auto"
+            w="216"
+            h="36.6"
             @resizing="onResize"
             :resizable="false"
             @dragstop="onDragstop"
@@ -122,19 +129,21 @@
             <img
               :src="b4"
               id="b4"
+              class="preg2c-img"
               width="216"
               height="36.6"
               @mousedown="setId"
-              @mouseup="setId"
+              @mouseup="setId2"
             />
           </vue-draggable-resizable>
           <vue-draggable-resizable
+            class="preg2c-vdr"
             @dragging="onDrag"
             :x="40"
             :y="220"
             :z="5"
-            w="auto"
-            h="auto"
+            w="216"
+            h="36.6"
             @resizing="onResize"
             :resizable="false"
             @dragstop="onDragstop"
@@ -142,6 +151,7 @@
             <img
               :src="b5"
               id="b5"
+              class="preg2c-img"
               width="216"
               height="36.6"
               @mousedown="setId"
@@ -149,12 +159,13 @@
             />
           </vue-draggable-resizable>
           <vue-draggable-resizable
+            class="preg2c-vdr"
             @dragging="onDrag"
             :x="40"
             :y="270"
             :z="6"
-            w="auto"
-            h="auto"
+            w="216"
+            h="36.6"
             @resizing="onResize"
             :resizable="false"
             @dragstop="onDragstop"
@@ -162,6 +173,7 @@
             <img
               :src="b6"
               id="b6"
+              class="preg2c-img"
               width="216"
               height="36.6"
               @mousedown="setId"
@@ -169,12 +181,13 @@
             />
           </vue-draggable-resizable>
           <vue-draggable-resizable
+            class="preg2c-vdr"
             @dragging="onDrag"
             :x="40"
             :y="320"
             :z="7"
-            w="auto"
-            h="auto"
+            w="216"
+            h="36.6"
             @resizing="onResize"
             :resizable="false"
             @dragstop="onDragstop"
@@ -182,6 +195,7 @@
             <img
               :src="b7"
               id="b7"
+              class="preg2c-img"
               width="216"
               height="36.6"
               @mousedown="setId"
@@ -189,12 +203,13 @@
             />
           </vue-draggable-resizable>
           <vue-draggable-resizable
+            class="preg2c-vdr"
             @dragging="onDrag"
             :x="40"
             :y="370"
             :z="8"
-            w="auto"
-            h="auto"
+            w="185.4"
+            h="171.6"
             @resizing="onResize"
             :resizable="false"
             @dragstop="onDragstop"
@@ -202,6 +217,7 @@
             <img
               :src="b8"
               id="b8"
+              class="preg2c-img"
               width="185.4"
               height="171.6"
               @mousedown="setId"
@@ -209,12 +225,13 @@
             />
           </vue-draggable-resizable>
           <vue-draggable-resizable
+            class="preg2c-vdr"
             @dragging="onDrag"
             :x="250"
             :y="370"
             :z="9"
-            w="auto"
-            h="auto"
+            w="185.4"
+            h="171.6"
             @resizing="onResize"
             :resizable="false"
             @dragstop="onDragstop"
@@ -222,6 +239,7 @@
             <img
               :src="b9"
               id="b9"
+              class="preg2c-img"
               width="185.4"
               height="171.6"
               @mousedown="setId"
@@ -229,12 +247,13 @@
             />
           </vue-draggable-resizable>
           <vue-draggable-resizable
+            class="preg2c-vdr"
             @dragging="onDrag"
             :x="40"
             :y="70"
             :z="10"
-            w="auto"
-            h="auto"
+            w="216"
+            h="36.6"
             @resizing="onResize"
             :resizable="false"
             @dragstop="onDragstop"
@@ -242,6 +261,7 @@
             <img
               :src="b2"
               id="b2b"
+              class="preg2c-img"
               width="216"
               height="36.6"
               @mousedown="setId"
@@ -477,6 +497,26 @@ function generarBordes(cirecle) {
     });
   });
 }
+
+const blocktypes = {
+  b1: undefined,
+  b2: 'direction',
+  b3: 'direction',
+  b4: 'direction',
+  b5: 'direction',
+  b6: undefined,
+  b7: undefined,
+  b8: 'conditional',
+  b9: 'for'
+}
+
+const solutions = [
+  "b1,b2,b4,b3",
+  "b1,b6,b4,b9,b2,b7",
+  "b1,b8,b2,b5,b3,b9,b2",
+];
+const OPTIMAL_SOLUTION = 2; // solucion 3 es la optima; index = 2 en el array
+
 export default {
   components: {
     modalThree,
@@ -508,8 +548,6 @@ export default {
 
       b1: require('@/assets/Bloque01.png'),
       b2: require('@/assets/Bloque02.png'),
-      b10: require('@/assets/Bloque02.png'),
-
       b3: require('@/assets/Bloque03.png'),
       b4: require('@/assets/Bloque04.png'),
       b5: require('@/assets/Bloque05.png'),
@@ -570,156 +608,227 @@ export default {
     setModalF() {
       this.modalIsActiveF = !this.modalIsActiveF;
     },
-
+    
+    addVariableAccordingToBlockType(blockId) {
+      switch (blocktypes[blockId]) {
+        case 'direction':
+          this.dir = this.dir + 1;
+          break;
+        case 'conditional':
+          this.cond = this.cond + 1;
+          break;
+        case 'for':
+          this.for = this.for + 1;
+          break;
+        default:
+          break;
+      }
+    },
     validarSolucion() {
-      var val = false;
-      if (
-        ((this.posiciones['b2'][1] - this.posiciones['b1'][1] < 70 &&
-          this.posiciones['b2'][1] - this.posiciones['b1'][1] > 0) ||
-          (this.posiciones['b2b'][1] - this.posiciones['b1'][1] < 70 &&
-            this.posiciones['b2b'][1] - this.posiciones['b1'][1] > 0)) &&
-        ((this.posiciones['b4'][1] - this.posiciones['b2'][1] < 70 &&
-          this.posiciones['b4'][1] - this.posiciones['b2'][1] > 0) ||
-          (this.posiciones['b4'][1] - this.posiciones['b2b'][1] < 70 &&
-            this.posiciones['b4'][1] - this.posiciones['b2b'][1] > 0)) &&
-        this.posiciones['b3'][1] - this.posiciones['b4'][1] < 70 &&
-        this.posiciones['b3'][1] - this.posiciones['b4'][1] > 0
-      ) {
-        var element3 = document.getElementById('bloque2');
-        var rect3 = element3.getBoundingClientRect();
-        val = true;
-        this.cum = 'si';
+      let val = false;
 
-        if (this.posiciones['b9'][0] > rect3.left - 78) {
-          this.for = this.for + 1;
-        }
-        if (this.posiciones['b8'][0] > rect3.left - 78) {
-          this.cond = this.cond + 1;
-        }
-        if (this.posiciones['b3'][0] > rect3.left - 78) {
-          this.dir = this.dir + 1;
-        }
-        if (this.posiciones['b2'][0] > rect3.left - 78) {
-          this.dir = this.dir + 1;
-        }
-        if (this.posiciones['b4'][0] > rect3.left - 78) {
-          this.dir = this.dir + 1;
-        }
-        if (this.posiciones['b5'][0] > rect3.left - 78) {
-          this.dir = this.dir + 1;
-        }
-        if (this.posiciones['b2b'][0] > rect3.left - 78) {
-          this.dir = this.dir + 1;
-        }
-      }
-      if (
-        this.posiciones['b6'][1] - this.posiciones['b1'][1] < 70 &&
-        this.posiciones['b6'][1] - this.posiciones['b1'][1] > 0 &&
-        this.posiciones['b4'][1] - this.posiciones['b6'][1] < 70 &&
-        this.posiciones['b4'][1] - this.posiciones['b6'][1] > 0 &&
-        this.posiciones['b9'][1] - this.posiciones['b4'][1] < 70 &&
-        this.posiciones['b9'][1] - this.posiciones['b4'][1] > 0 &&
-        ((this.posiciones['b2'][1] - this.posiciones['b9'][1] < 70 &&
-          this.posiciones['b2'][1] - this.posiciones['b9'][1] > 0) ||
-          (this.posiciones['b2b'][1] - this.posiciones['b9'][1] < 70 &&
-            this.posiciones['b2b'][1] - this.posiciones['b9'][1] > 0)) &&
-        // this.posiciones['b9'][0]-this.posiciones['b2'][0]>20 && this.posiciones['b9'][0]-this.posiciones['b2'][0]<200 &&
-        ((this.posiciones['b7'][1] - this.posiciones['b2'][1] < 70 &&
-          this.posiciones['b7'][1] - this.posiciones['b2'][1]) ||
-          (this.posiciones['b7'][1] - this.posiciones['b2b'][1] < 70 &&
-            this.posiciones['b7'][1] - this.posiciones['b2b'][1])) > 0
-        // this.posiciones['b9'][0]-this.posiciones['b7'][0]>20 && this.posiciones['b9'][0]-this.posiciones['b7'][0]<200
-      ) {
-        var element2 = document.getElementById('bloque2');
-        var rect2 = element2.getBoundingClientRect();
-        val = true;
-        this.cum = 'si';
-        if (this.posiciones['b9'][0] > rect2.left - 78) {
-          this.for = this.for + 1;
-        }
-        if (this.posiciones['b8'][0] > rect2.left - 78) {
-          this.cond = this.cond + 1;
-        }
-        if (this.posiciones['b3'][0] > rect2.left - 78) {
-          this.dir = this.dir + 1;
-        }
-        if (this.posiciones['b2'][0] > rect2.left - 78) {
-          this.dir = this.dir + 1;
-        }
-        if (this.posiciones['b4'][0] > rect2.left - 78) {
-          this.dir = this.dir + 1;
-        }
-        if (this.posiciones['b5'][0] > rect2.left - 78) {
-          this.dir = this.dir + 1;
-        }
-        if (this.posiciones['b2b'][0] > rect2.left - 78) {
-          this.dir = this.dir + 1;
+      const bloque2 = document.getElementById('bloque2');
+      const rectBloque2 = bloque2.getBoundingClientRect();
+      const newPositionsArray = [];
+      // Iteramos el array de posiciones
+      for (let key in this.posiciones) {
+        const item = document.getElementById(key);
+        const rectItem = item.getBoundingClientRect();
+        // Comprobamos si la imagen está dentro (Está siendo utilizado)
+        if (
+          rectItem.left >= rectBloque2.left 
+          && rectItem.top >= rectBloque2.top
+          && rectItem.right <= rectBloque2.right
+          && rectItem.bottom <= rectBloque2.bottom
+        ) {
+          const newObj = { // TODO: Los componentes "x" e "y" se podrían eliminar, creo que no se usan
+            id: key,
+            x: rectItem.x,
+            y: rectItem.y,
+          };
+          newPositionsArray.push(newObj);
         }
       }
-      if (
-        this.posiciones['b8'][1] - this.posiciones['b1'][1] < 70 &&
-        this.posiciones['b8'][1] - this.posiciones['b1'][1] > 0 &&
-        ((this.posiciones['b2'][1] - this.posiciones['b8'][1] < 70 &&
-          this.posiciones['b2'][1] - this.posiciones['b8'][1] > 0) ||
-          (this.posiciones['b2b'][1] - this.posiciones['b8'][1] < 70 &&
-            this.posiciones['b2b'][1] - this.posiciones['b8'][1] > 0)) &&
-        ((this.posiciones['b5'][1] - this.posiciones['b2'][1] < 70 &&
-          this.posiciones['b5'][1] - this.posiciones['b2'][1] > 0) ||
-          (this.posiciones['b5'][1] - this.posiciones['b2b'][1] < 70 &&
-            this.posiciones['b5'][1] - this.posiciones['b2b'][1] > 0)) &&
-        this.posiciones['b3'][1] - this.posiciones['b5'][1] < 70 &&
-        this.posiciones['b3'][1] - this.posiciones['b5'][1] > 0 &&
-        this.posiciones['b9'][1] - this.posiciones['b3'][1] < 100 &&
-        this.posiciones['b9'][1] - this.posiciones['b3'][1] > 0 &&
-        ((this.posiciones['b2b'][1] - this.posiciones['b9'][1] < 70 &&
-          this.posiciones['b2b'][1] - this.posiciones['b9'][1] > 0) ||
-          (this.posiciones['b2'][1] - this.posiciones['b9'][1] < 70 &&
-            this.posiciones['b2'][1] - this.posiciones['b9'][1] > 0))
-      ) {
-        val = true;
-        this.cum = 'si';
-        this.opt = 'si';
-        var element = document.getElementById('bloque2');
-        var rect = element.getBoundingClientRect();
-        if (this.posiciones['b9'][0] > rect.left - 78) {
-          this.for = this.for + 1;
-        }
-        if (this.posiciones['b8'][0] > rect.left - 78) {
-          this.cond = this.cond + 1;
-        }
-        if (this.posiciones['b3'][0] > rect.left - 78) {
-          this.dir = this.dir + 1;
-        }
-        if (this.posiciones['b2'][0] > rect.left - 78) {
-          this.dir = this.dir + 1;
-        }
-        if (this.posiciones['b4'][0] > rect.left - 78) {
-          this.dir = this.dir + 1;
-        }
-        if (this.posiciones['b5'][0] > rect.left - 78) {
-          this.dir = this.dir + 1;
-        }
-        if (this.posiciones['b2b'][0] > rect.left - 78) {
-          this.dir = this.dir + 1;
-        }
+      const newSortedPositionsArray = newPositionsArray.sort((a, b) => (a.y < b.y) ? -1 : (a.y > b.y) ? 1 : 0);
+      let sortedIdsString = '';
+      // concatenamos el string con los IDs de los bloques que se utilizaron en orden de arriba hacia abajo
+      for (let i = 0; i < newSortedPositionsArray.length; i++) {
+        let idOfElement = newSortedPositionsArray[i].id;
+        if (idOfElement == "b2b") idOfElement = "b2";
+        sortedIdsString += idOfElement;
+        this.addVariableAccordingToBlockType(idOfElement);
+
+        if(i < newSortedPositionsArray.length-1) sortedIdsString += ',';
       }
+      const indexOfSolution = solutions.indexOf(sortedIdsString);
+      val = indexOfSolution != -1
 
       if (val) {
         this.cum = 'si';
         this.probado = this.probado + 1;
-
+        this.opt = OPTIMAL_SOLUTION === indexOfSolution ? 'si' : 'no';
         alert('Respuesta correcta');
       } else {
-        // this.enviarData()
         this.probado = this.probado + 1;
-
         alert('Respuesta incorrecta');
-
-        this.tiempoI = Date.now();
-
+        // this.tiempoI = Date.now(); //TODO: Preguntar a Amadeo pq se seteaba el tiempo inicio de nuevo
         this.errores = this.errores + 1;
       }
+
+      console.log(indexOfSolution, val);
       return val;
+
+      // TODO: Si todo funciona correctamente, borrar toda este solución antigua
+      // if (
+      //   ((this.posiciones['b2'][1] - this.posiciones['b1'][1] < 70 &&
+      //     this.posiciones['b2'][1] - this.posiciones['b1'][1] > 0) ||
+      //     (this.posiciones['b2b'][1] - this.posiciones['b1'][1] < 70 &&
+      //       this.posiciones['b2b'][1] - this.posiciones['b1'][1] > 0)) &&
+      //   ((this.posiciones['b4'][1] - this.posiciones['b2'][1] < 70 &&
+      //     this.posiciones['b4'][1] - this.posiciones['b2'][1] > 0) ||
+      //     (this.posiciones['b4'][1] - this.posiciones['b2b'][1] < 70 &&
+      //       this.posiciones['b4'][1] - this.posiciones['b2b'][1] > 0)) &&
+      //   this.posiciones['b3'][1] - this.posiciones['b4'][1] < 70 &&
+      //   this.posiciones['b3'][1] - this.posiciones['b4'][1] > 0
+      // ) {
+      //   var element3 = document.getElementById('bloque2');
+      //   var rect3 = element3.getBoundingClientRect();
+      //   val = true;
+      //   console.log('sol1');
+      //   this.cum = 'si';
+
+      //   if (this.posiciones['b9'][0] > rect3.left - 78) {
+      //     this.for = this.for + 1;
+      //   }
+      //   if (this.posiciones['b8'][0] > rect3.left - 78) {
+      //     this.cond = this.cond + 1;
+      //   }
+      //   if (this.posiciones['b3'][0] > rect3.left - 78) {
+      //     this.dir = this.dir + 1;
+      //   }
+      //   if (this.posiciones['b2'][0] > rect3.left - 78) {
+      //     this.dir = this.dir + 1;
+      //   }
+      //   if (this.posiciones['b4'][0] > rect3.left - 78) {
+      //     this.dir = this.dir + 1;
+      //   }
+      //   if (this.posiciones['b5'][0] > rect3.left - 78) {
+      //     this.dir = this.dir + 1;
+      //   }
+      //   if (this.posiciones['b2b'][0] > rect3.left - 78) {
+      //     this.dir = this.dir + 1;
+      //   }
+      // }
+      // if (
+      //   this.posiciones['b6'][1] - this.posiciones['b1'][1] < 70 &&
+      //   this.posiciones['b6'][1] - this.posiciones['b1'][1] > 0 &&
+      //   this.posiciones['b4'][1] - this.posiciones['b6'][1] < 70 &&
+      //   this.posiciones['b4'][1] - this.posiciones['b6'][1] > 0 &&
+      //   this.posiciones['b9'][1] - this.posiciones['b4'][1] < 70 &&
+      //   this.posiciones['b9'][1] - this.posiciones['b4'][1] > 0 &&
+      //   ((this.posiciones['b2'][1] - this.posiciones['b9'][1] < 70 &&
+      //     this.posiciones['b2'][1] - this.posiciones['b9'][1] > 0) ||
+      //     (this.posiciones['b2b'][1] - this.posiciones['b9'][1] < 70 &&
+      //       this.posiciones['b2b'][1] - this.posiciones['b9'][1] > 0)) &&
+      //   // this.posiciones['b9'][0]-this.posiciones['b2'][0]>20 && this.posiciones['b9'][0]-this.posiciones['b2'][0]<200 &&
+      //   ((this.posiciones['b7'][1] - this.posiciones['b2'][1] < 70 &&
+      //     this.posiciones['b7'][1] - this.posiciones['b2'][1]) ||
+      //     (this.posiciones['b7'][1] - this.posiciones['b2b'][1] < 70 &&
+      //       this.posiciones['b7'][1] - this.posiciones['b2b'][1])) > 0
+      //   // this.posiciones['b9'][0]-this.posiciones['b7'][0]>20 && this.posiciones['b9'][0]-this.posiciones['b7'][0]<200
+      // ) {
+      //   var element2 = document.getElementById('bloque2');
+      //   var rect2 = element2.getBoundingClientRect();
+      //   val = true;
+      //   console.log('sol2');
+      //   this.cum = 'si';
+      //   if (this.posiciones['b9'][0] > rect2.left - 78) {
+      //     this.for = this.for + 1;
+      //   }
+      //   if (this.posiciones['b8'][0] > rect2.left - 78) {
+      //     this.cond = this.cond + 1;
+      //   }
+      //   if (this.posiciones['b3'][0] > rect2.left - 78) {
+      //     this.dir = this.dir + 1;
+      //   }
+      //   if (this.posiciones['b2'][0] > rect2.left - 78) {
+      //     this.dir = this.dir + 1;
+      //   }
+      //   if (this.posiciones['b4'][0] > rect2.left - 78) {
+      //     this.dir = this.dir + 1;
+      //   }
+      //   if (this.posiciones['b5'][0] > rect2.left - 78) {
+      //     this.dir = this.dir + 1;
+      //   }
+      //   if (this.posiciones['b2b'][0] > rect2.left - 78) {
+      //     this.dir = this.dir + 1;
+      //   }
+      // }
+      // if (
+      //   this.posiciones['b8'][1] - this.posiciones['b1'][1] < 70 &&
+      //   this.posiciones['b8'][1] - this.posiciones['b1'][1] > 0 &&
+      //   ((this.posiciones['b2'][1] - this.posiciones['b8'][1] < 70 &&
+      //     this.posiciones['b2'][1] - this.posiciones['b8'][1] > 0) ||
+      //     (this.posiciones['b2b'][1] - this.posiciones['b8'][1] < 70 &&
+      //       this.posiciones['b2b'][1] - this.posiciones['b8'][1] > 0)) &&
+      //   ((this.posiciones['b5'][1] - this.posiciones['b2'][1] < 70 &&
+      //     this.posiciones['b5'][1] - this.posiciones['b2'][1] > 0) ||
+      //     (this.posiciones['b5'][1] - this.posiciones['b2b'][1] < 70 &&
+      //       this.posiciones['b5'][1] - this.posiciones['b2b'][1] > 0)) &&
+      //   this.posiciones['b3'][1] - this.posiciones['b5'][1] < 70 &&
+      //   this.posiciones['b3'][1] - this.posiciones['b5'][1] > 0 &&
+      //   this.posiciones['b9'][1] - this.posiciones['b3'][1] < 100 &&
+      //   this.posiciones['b9'][1] - this.posiciones['b3'][1] > 0 &&
+      //   ((this.posiciones['b2b'][1] - this.posiciones['b9'][1] < 70 &&
+      //     this.posiciones['b2b'][1] - this.posiciones['b9'][1] > 0) ||
+      //     (this.posiciones['b2'][1] - this.posiciones['b9'][1] < 70 &&
+      //       this.posiciones['b2'][1] - this.posiciones['b9'][1] > 0))
+      // ) {
+      //   val = true;
+      //   console.log('sol3');
+      //   this.cum = 'si';
+      //   this.opt = 'si';
+      //   var element = document.getElementById('bloque2');
+      //   var rect = element.getBoundingClientRect();
+      //   if (this.posiciones['b9'][0] > rect.left - 78) {
+      //     this.for = this.for + 1;
+      //   }
+      //   if (this.posiciones['b8'][0] > rect.left - 78) {
+      //     this.cond = this.cond + 1;
+      //   }
+      //   if (this.posiciones['b3'][0] > rect.left - 78) {
+      //     this.dir = this.dir + 1;
+      //   }
+      //   if (this.posiciones['b2'][0] > rect.left - 78) {
+      //     this.dir = this.dir + 1;
+      //   }
+      //   if (this.posiciones['b4'][0] > rect.left - 78) {
+      //     this.dir = this.dir + 1;
+      //   }
+      //   if (this.posiciones['b5'][0] > rect.left - 78) {
+      //     this.dir = this.dir + 1;
+      //   }
+      //   if (this.posiciones['b2b'][0] > rect.left - 78) {
+      //     this.dir = this.dir + 1;
+      //   }
+      // }
+
+      // if (val) {
+      //   this.cum = 'si';
+      //   this.probado = this.probado + 1;
+
+      //   alert('Respuesta correcta');
+      // } else {
+      //   // this.enviarData()
+      //   this.probado = this.probado + 1;
+
+      //   alert('Respuesta incorrecta');
+
+      //   this.tiempoI = Date.now();
+
+      //   this.errores = this.errores + 1;
+      // }
+      // return val;
     },
     guardarSolucion() {
       alert("Se guardó la respuesta, presiona 'siguiente.'");
@@ -790,8 +899,8 @@ export default {
         1,
         tt / 1000,
         1,
-        tI.toUTCString(),
-        tf.toUTCString(),
+        tI.toString(),
+        tf.toString(),
         '-',
         this.cum,
         this.cum,
@@ -818,24 +927,28 @@ export default {
       this.posiciones[event.target.id][0] = this.xtemp;
       this.posiciones[event.target.id][1] = this.ytemp;
     },
-    setId2: function(event) {
+    setId2: function(event) { // TODO: REVISAR BIEN EL DEVUELVO, hay casos en donde no funciona
       this.tempArriba = event.target.id;
       var element = document.getElementById('bloque2');
       var rect = element.getBoundingClientRect();
       if (this.tempAbajo == this.tempArriba) {
+        console.log('primer if');
         if (
           this.posiciones[this.tempArriba][0] > rect.left - 78 &&
           this.xtemp < rect.left - 78
         ) {
+          console.log('devuelto');
           this.dev = this.dev + 1;
         }
         this.posiciones[this.tempArriba][0] = this.xtemp;
         this.posiciones[this.tempArriba][1] = this.ytemp;
       } else {
+        console.log('else if');
         if (
           this.posiciones[this.tempArriba][0] > rect.left - 78 &&
           this.xtemp < rect.left - 78
         ) {
+          console.log('devuelto');
           this.dev = this.dev + 1;
         }
         this.posiciones[this.tempAbajo][0] = this.xtemp;
@@ -860,4 +973,11 @@ export default {
 <style>
 @import '../../assets/vistas_styles.css';
 @import '../../assets/pregs_styles.css';
+
+.preg2c-vdr {
+  border-color: rgba(0, 0, 0, 0.2) !important;
+}
+.preg2c-img {
+  margin: 0;
+}
 </style>
