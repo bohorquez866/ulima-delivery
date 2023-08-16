@@ -501,7 +501,7 @@ export default {
     },
 
     validarPeso() {
-      let totalWeight = -Infinity;
+      let totalWeight = 0;
       for (let i = 0; i < this.conexiones.length; i++) {
         totalWeight += this.conexiones[i].peso;
       }

@@ -365,7 +365,14 @@ const { GoogleSpreadsheet } = require('google-spreadsheet');
 
 function generateTargets() {
   const circles = [
-    { x: 200, y: 50, id: 1, color: '#3CCF4E', con: { 3: 5 }, puntosBorde: [] },
+    { 
+      x: 200, 
+      y: 50, 
+      id: 1, 
+      color: '#3CCF4E', 
+      con: { 3: 5 }, 
+      puntosBorde: [] 
+    },
     {
       x: 400,
       y: 50,
@@ -511,8 +518,8 @@ function generateTargets2() {
   return circles;
 }
 
-function generarBordes(cirecle) {
-  cirecle.forEach((element) => {
+function generarBordes(circle) {
+  circle.forEach((element) => {
     element.puntosBorde.push({
       up: [element.x, element.y - 40],
       right: [element.x + 40, element.y],

@@ -261,7 +261,7 @@ export default {
         tiempo: "x",
         ruta: "x",
         matriz: "x",
-        cumplio: this.eleccion,
+        cumplio: this.eleccion != '' ? 'si' : 'no',
         optima: this.opt,
         identProblema: "x",
         aspectos: this.aspectos,

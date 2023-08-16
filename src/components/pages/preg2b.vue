@@ -526,8 +526,8 @@ function generateTargets2() {
   return circles;
 }
 
-function generarBordes(cirecle) {
-  cirecle.forEach((element) => {
+function generarBordes(circle) {
+  circle.forEach((element) => {
     element.puntosBorde.push({
       up: [element.x, element.y - 40],
       right: [element.x + 40, element.y],
