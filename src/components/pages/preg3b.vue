@@ -529,8 +529,8 @@ export default {
         1,
         tt / 1000,
         1,
-        tI.toUTCString(),
-        tf.toUTCString(),
+        tI.toString(),
+        tf.toString(),
         this.getMatrizT(),
       );
       this.sendRow();
