@@ -572,19 +572,21 @@ export default {
       xtemp: 0,
       ytemp: 0,
       posiciones: {
-        b1: [0, 0],
-        b2: [0, 0],
-        b3: [0, 0],
-        b4: [0, 0],
-        b5: [0, 0],
-        b6: [0, 0],
-        b7: [0, 0],
-        b8: [0, 0],
-        b9: [0, 0],
-        b2b: [0, 0],
+        b1: {coords: [0, 0], left: 0, top: 0, right: 0, bottom: 0},
+        b2: {coords: [0, 0], left: 0, top: 0, right: 0, bottom: 0},
+        b3: {coords: [0, 0], left: 0, top: 0, right: 0, bottom: 0},
+        b4: {coords: [0, 0], left: 0, top: 0, right: 0, bottom: 0},
+        b5: {coords: [0, 0], left: 0, top: 0, right: 0, bottom: 0},
+        b6: {coords: [0, 0], left: 0, top: 0, right: 0, bottom: 0},
+        b7: {coords: [0, 0], left: 0, top: 0, right: 0, bottom: 0},
+        b8: {coords: [0, 0], left: 0, top: 0, right: 0, bottom: 0},
+        b9: {coords: [0, 0], left: 0, top: 0, right: 0, bottom: 0},
+        b2b: {coords: [0, 0], left: 0, top: 0, right: 0, bottom: 0},
       },
-      tempAbajo: '',
-      tempArriba: '',
+      // tempAbajo: '',
+      // tempArriba: '',
+      tempAbajo: {id: '', left: 0, top: 0, right: 0, bottom: 0},
+      tempArriba: {id: '', left: 0, top: 0, right: 0, bottom: 0},
       tiempoI: 0,
       tiempoF: 0,
       tiMatriz: 0,
@@ -671,164 +673,11 @@ export default {
       } else {
         this.probado = this.probado + 1;
         alert('Respuesta incorrecta');
-        // this.tiempoI = Date.now(); //TODO: Preguntar a Amadeo pq se seteaba el tiempo inicio de nuevo
+        // this.tiempoI = Date.now(); //TODO: En un futuro, Amadeo quiere guardar los tiempos por cada vez que prueba la sol. Por ahora, dejar el tiempoI desde el inicio, no resetearlo
         this.errores = this.errores + 1;
       }
 
-      console.log(indexOfSolution, val);
       return val;
-
-      // TODO: Si todo funciona correctamente, borrar toda este solución antigua
-      // if (
-      //   ((this.posiciones['b2'][1] - this.posiciones['b1'][1] < 70 &&
-      //     this.posiciones['b2'][1] - this.posiciones['b1'][1] > 0) ||
-      //     (this.posiciones['b2b'][1] - this.posiciones['b1'][1] < 70 &&
-      //       this.posiciones['b2b'][1] - this.posiciones['b1'][1] > 0)) &&
-      //   ((this.posiciones['b4'][1] - this.posiciones['b2'][1] < 70 &&
-      //     this.posiciones['b4'][1] - this.posiciones['b2'][1] > 0) ||
-      //     (this.posiciones['b4'][1] - this.posiciones['b2b'][1] < 70 &&
-      //       this.posiciones['b4'][1] - this.posiciones['b2b'][1] > 0)) &&
-      //   this.posiciones['b3'][1] - this.posiciones['b4'][1] < 70 &&
-      //   this.posiciones['b3'][1] - this.posiciones['b4'][1] > 0
-      // ) {
-      //   var element3 = document.getElementById('bloque2');
-      //   var rect3 = element3.getBoundingClientRect();
-      //   val = true;
-      //   console.log('sol1');
-      //   this.cum = 'si';
-
-      //   if (this.posiciones['b9'][0] > rect3.left - 78) {
-      //     this.for = this.for + 1;
-      //   }
-      //   if (this.posiciones['b8'][0] > rect3.left - 78) {
-      //     this.cond = this.cond + 1;
-      //   }
-      //   if (this.posiciones['b3'][0] > rect3.left - 78) {
-      //     this.dir = this.dir + 1;
-      //   }
-      //   if (this.posiciones['b2'][0] > rect3.left - 78) {
-      //     this.dir = this.dir + 1;
-      //   }
-      //   if (this.posiciones['b4'][0] > rect3.left - 78) {
-      //     this.dir = this.dir + 1;
-      //   }
-      //   if (this.posiciones['b5'][0] > rect3.left - 78) {
-      //     this.dir = this.dir + 1;
-      //   }
-      //   if (this.posiciones['b2b'][0] > rect3.left - 78) {
-      //     this.dir = this.dir + 1;
-      //   }
-      // }
-      // if (
-      //   this.posiciones['b6'][1] - this.posiciones['b1'][1] < 70 &&
-      //   this.posiciones['b6'][1] - this.posiciones['b1'][1] > 0 &&
-      //   this.posiciones['b4'][1] - this.posiciones['b6'][1] < 70 &&
-      //   this.posiciones['b4'][1] - this.posiciones['b6'][1] > 0 &&
-      //   this.posiciones['b9'][1] - this.posiciones['b4'][1] < 70 &&
-      //   this.posiciones['b9'][1] - this.posiciones['b4'][1] > 0 &&
-      //   ((this.posiciones['b2'][1] - this.posiciones['b9'][1] < 70 &&
-      //     this.posiciones['b2'][1] - this.posiciones['b9'][1] > 0) ||
-      //     (this.posiciones['b2b'][1] - this.posiciones['b9'][1] < 70 &&
-      //       this.posiciones['b2b'][1] - this.posiciones['b9'][1] > 0)) &&
-      //   // this.posiciones['b9'][0]-this.posiciones['b2'][0]>20 && this.posiciones['b9'][0]-this.posiciones['b2'][0]<200 &&
-      //   ((this.posiciones['b7'][1] - this.posiciones['b2'][1] < 70 &&
-      //     this.posiciones['b7'][1] - this.posiciones['b2'][1]) ||
-      //     (this.posiciones['b7'][1] - this.posiciones['b2b'][1] < 70 &&
-      //       this.posiciones['b7'][1] - this.posiciones['b2b'][1])) > 0
-      //   // this.posiciones['b9'][0]-this.posiciones['b7'][0]>20 && this.posiciones['b9'][0]-this.posiciones['b7'][0]<200
-      // ) {
-      //   var element2 = document.getElementById('bloque2');
-      //   var rect2 = element2.getBoundingClientRect();
-      //   val = true;
-      //   console.log('sol2');
-      //   this.cum = 'si';
-      //   if (this.posiciones['b9'][0] > rect2.left - 78) {
-      //     this.for = this.for + 1;
-      //   }
-      //   if (this.posiciones['b8'][0] > rect2.left - 78) {
-      //     this.cond = this.cond + 1;
-      //   }
-      //   if (this.posiciones['b3'][0] > rect2.left - 78) {
-      //     this.dir = this.dir + 1;
-      //   }
-      //   if (this.posiciones['b2'][0] > rect2.left - 78) {
-      //     this.dir = this.dir + 1;
-      //   }
-      //   if (this.posiciones['b4'][0] > rect2.left - 78) {
-      //     this.dir = this.dir + 1;
-      //   }
-      //   if (this.posiciones['b5'][0] > rect2.left - 78) {
-      //     this.dir = this.dir + 1;
-      //   }
-      //   if (this.posiciones['b2b'][0] > rect2.left - 78) {
-      //     this.dir = this.dir + 1;
-      //   }
-      // }
-      // if (
-      //   this.posiciones['b8'][1] - this.posiciones['b1'][1] < 70 &&
-      //   this.posiciones['b8'][1] - this.posiciones['b1'][1] > 0 &&
-      //   ((this.posiciones['b2'][1] - this.posiciones['b8'][1] < 70 &&
-      //     this.posiciones['b2'][1] - this.posiciones['b8'][1] > 0) ||
-      //     (this.posiciones['b2b'][1] - this.posiciones['b8'][1] < 70 &&
-      //       this.posiciones['b2b'][1] - this.posiciones['b8'][1] > 0)) &&
-      //   ((this.posiciones['b5'][1] - this.posiciones['b2'][1] < 70 &&
-      //     this.posiciones['b5'][1] - this.posiciones['b2'][1] > 0) ||
-      //     (this.posiciones['b5'][1] - this.posiciones['b2b'][1] < 70 &&
-      //       this.posiciones['b5'][1] - this.posiciones['b2b'][1] > 0)) &&
-      //   this.posiciones['b3'][1] - this.posiciones['b5'][1] < 70 &&
-      //   this.posiciones['b3'][1] - this.posiciones['b5'][1] > 0 &&
-      //   this.posiciones['b9'][1] - this.posiciones['b3'][1] < 100 &&
-      //   this.posiciones['b9'][1] - this.posiciones['b3'][1] > 0 &&
-      //   ((this.posiciones['b2b'][1] - this.posiciones['b9'][1] < 70 &&
-      //     this.posiciones['b2b'][1] - this.posiciones['b9'][1] > 0) ||
-      //     (this.posiciones['b2'][1] - this.posiciones['b9'][1] < 70 &&
-      //       this.posiciones['b2'][1] - this.posiciones['b9'][1] > 0))
-      // ) {
-      //   val = true;
-      //   console.log('sol3');
-      //   this.cum = 'si';
-      //   this.opt = 'si';
-      //   var element = document.getElementById('bloque2');
-      //   var rect = element.getBoundingClientRect();
-      //   if (this.posiciones['b9'][0] > rect.left - 78) {
-      //     this.for = this.for + 1;
-      //   }
-      //   if (this.posiciones['b8'][0] > rect.left - 78) {
-      //     this.cond = this.cond + 1;
-      //   }
-      //   if (this.posiciones['b3'][0] > rect.left - 78) {
-      //     this.dir = this.dir + 1;
-      //   }
-      //   if (this.posiciones['b2'][0] > rect.left - 78) {
-      //     this.dir = this.dir + 1;
-      //   }
-      //   if (this.posiciones['b4'][0] > rect.left - 78) {
-      //     this.dir = this.dir + 1;
-      //   }
-      //   if (this.posiciones['b5'][0] > rect.left - 78) {
-      //     this.dir = this.dir + 1;
-      //   }
-      //   if (this.posiciones['b2b'][0] > rect.left - 78) {
-      //     this.dir = this.dir + 1;
-      //   }
-      // }
-
-      // if (val) {
-      //   this.cum = 'si';
-      //   this.probado = this.probado + 1;
-
-      //   alert('Respuesta correcta');
-      // } else {
-      //   // this.enviarData()
-      //   this.probado = this.probado + 1;
-
-      //   alert('Respuesta incorrecta');
-
-      //   this.tiempoI = Date.now();
-
-      //   this.errores = this.errores + 1;
-      // }
-      // return val;
     },
     guardarSolucion() {
       alert("Se guardó la respuesta, presiona 'siguiente.'");
@@ -912,52 +761,100 @@ export default {
         alert('Se guardo la respuesta. Presionar siguiente');
       }
     },
+    setTempAbajo(_id, _left, _top, _right, _bottom) {
+      this.tempAbajo.id = _id;
+      this.tempAbajo.left = _left;
+      this.tempAbajo.top = _top;
+      this.tempAbajo.right = _right;
+      this.tempAbajo.bottom = _bottom;
+    },
+    setTempArriba(_id, _left, _top, _right, _bottom) {
+      this.tempArriba.id = _id;
+      this.tempArriba.left = _left;
+      this.tempArriba.top = _top;
+      this.tempArriba.right = _right;
+      this.tempArriba.bottom = _bottom;
+    },
     onResize: function(x, y, width, height) {
       this.x = x;
       this.y = y;
       this.width = width;
       this.height = height;
     },
-    onDrag: function(x, y) {
+    onDrag: function(x, y) { // Se ejecuta inmediatamente después de setId
       this.x = x;
       this.y = y;
     },
     setId: function(event) {
-      this.tempAbajo = event.target.id;
-      this.posiciones[event.target.id][0] = this.xtemp;
-      this.posiciones[event.target.id][1] = this.ytemp;
+      const itemId = event.target.id
+      const item = document.getElementById(itemId);
+      const rectItem = item.getBoundingClientRect();
+
+      this.setTempAbajo(
+        itemId, 
+        rectItem.left, 
+        rectItem.top, 
+        rectItem.right, 
+        rectItem.bottom
+      );
+
+      console.log('setId', this.tempAbajo);
     },
     setId2: function(event) { // TODO: REVISAR BIEN EL DEVUELVO, hay casos en donde no funciona
-      this.tempArriba = event.target.id;
-      var element = document.getElementById('bloque2');
-      var rect = element.getBoundingClientRect();
-      if (this.tempAbajo == this.tempArriba) {
-        console.log('primer if');
-        if (
-          this.posiciones[this.tempArriba][0] > rect.left - 78 &&
-          this.xtemp < rect.left - 78
-        ) {
-          console.log('devuelto');
-          this.dev = this.dev + 1;
-        }
-        this.posiciones[this.tempArriba][0] = this.xtemp;
-        this.posiciones[this.tempArriba][1] = this.ytemp;
-      } else {
-        console.log('else if');
-        if (
-          this.posiciones[this.tempArriba][0] > rect.left - 78 &&
-          this.xtemp < rect.left - 78
-        ) {
-          console.log('devuelto');
-          this.dev = this.dev + 1;
-        }
-        this.posiciones[this.tempAbajo][0] = this.xtemp;
-        this.posiciones[this.tempAbajo][1] = this.ytemp;
+      //Revisar que el id del evento sea igual al del tempArriba
+      const eventId = event.target.id;
+      if(eventId != this.tempArriba.id) { // El mouse ha sido soltado cuando había una superposición de elementos, se debe asignar el tempArriba.id
+        const itemId = this.tempAbajo.id;
+        const item = document.getElementById(itemId);
+        const rectItem = item.getBoundingClientRect();
+
+        this.setTempArriba(
+          itemId, 
+          rectItem.left, 
+          rectItem.top, 
+          rectItem.right, 
+          rectItem.bottom
+        );
       }
+
+      // const bloque1 = document.getElementById('bloque1');
+      // const rectBloque1 = bloque1.getBoundingClientRect();
+      const bloque2 = document.getElementById('bloque2');
+      const rectBloque2 = bloque2.getBoundingClientRect();
+
+      if(
+        // Primero, comprobamos que el bloque después del arraste o soltar click esté a la izquierda del espacio2
+        (this.tempArriba.left < rectBloque2.left 
+        && this.tempArriba.top >= rectBloque2.top
+        && this.tempArriba.right < rectBloque2.left
+        && this.tempArriba.bottom <= rectBloque2.bottom) 
+        && 
+        // Segundo, comprobamos que el bloque antes del arrastre haya estado dentro del espacio2
+        (this.tempAbajo.left >= rectBloque2.left 
+        && this.tempAbajo.top >= rectBloque2.top
+        && this.tempAbajo.right <= rectBloque2.right
+        && this.tempAbajo.bottom <= rectBloque2.bottom)
+      ) {
+        // Si ambas condiciones se cumplen, significa que el bloque en cuestión ha sido devuelto
+        console.log('devuelto', this.tempArriba.id);
+        this.dev = this.dev + 1;
+      }
+
+      console.log('setId2', this.tempArriba);
     },
-    onDragstop: function(ev) {
-      this.xtemp = this.x;
-      this.ytemp = this.y;
+    onDragstop: function(ev) { // Esta se ejecuta primero que setId2
+      const itemId = this.tempAbajo.id;
+      const item = document.getElementById(itemId);
+      const rectItem = item.getBoundingClientRect();
+
+      this.setTempArriba(
+        itemId, 
+        rectItem.left, 
+        rectItem.top, 
+        rectItem.right, 
+        rectItem.bottom
+      );
+      
       return ev;
     },
     startTimer: function() {
