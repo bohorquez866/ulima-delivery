@@ -2,25 +2,13 @@
   <div class="big_container p3a">
     <div class="titulo_escenario">
       <div class="subtitle">
-        <h1>Pregunta 6: Traza la solución de Pacman</h1>
-
-        <p>
-          Finalmente, Pacman y Carita Feliz tienen cada uno una propuesta de
-          camino a seguir para trasladarse de manera segura. ¿Puedes entender y
-          trazar el camino propuesto por Pacman?
-          <br />
-          <br />
-          ¿No recuerdas cómo se realizan los movimientos o qué significan?,
-          <a @click="setModalFo">Ver movimientos</a>
-          <br />
-          <br />
-          <strong
-            >No te olvides de “Probar tu solución” antes de guardar
-            solución.</strong
-          >
-        </p>
+        <h1>Escenario 2 → Pregunta 6a: Traza la solución de Pacman</h1>
+        <p>Dada la secuencia de instrucciones, colabora con Pacman para ejecutar esas indicaciones y trasladarse de manera segura con Carita Feliz.</p>
+        <p>¿No recuerdas cómo se realizan los movimientos o qué significan? Haz clic <a @click="setModalFo">aquí</a>.</p>
+        <p><strong>No te olvides de “Probar tu solución” antes de guardarla.</strong></p>
       </div>
       <p class="ver_sc part">Esta pregunta tiene tres partes: 1/3</p>
+
       <div class="modal modalFour" v-if="modalIsActiveFo">
         <div class="submodal">
           <modal-four setModalFo="setModalFo"

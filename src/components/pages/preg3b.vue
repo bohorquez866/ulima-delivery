@@ -2,8 +2,7 @@
   <div class="big_container">
     <div class="titulo_escenario">
       <div class="subtitle">
-        <h1>Pregunta 6: Traza la solución de Carita Feliz</h1>
-
+        <h1>Escenario 2 → Pregunta 6b: Traza la solución de Carita Feliz</h1>
         <p>
           Finalmente, Pacman y Carita Feliz tienen cada uno una propuesta de
           camino a seguir para trasladarse de manera segura. ¿Puedes entender y
@@ -11,7 +10,7 @@
           <br />
           <br />
           ¿No recuerdas cómo se realizan los movimientos o qué significan?,
-          <a @click="setModalFo">Ver movimientos</a>
+          <a @click="setModalFo">Ver movimientos</a>.
           <br />
           <br />
           <strong

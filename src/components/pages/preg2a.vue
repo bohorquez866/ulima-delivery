@@ -3,21 +3,10 @@
     <div class="big_container">
       <div class="titulo_escenario">
         <div class="subtitle">
-          <h1>Pregunta 4: Descubre el patron del fantasma</h1>
-          <p>
-            Ambos han intentado los siguientes caminos, pero no han logrado
-            llegar a la academia
-            <strong>(ver imagen)</strong>. Con esta información, descubre el
-            patrón de desplazamiento del fantasma rosado.
-            <br />
-            <br />
-            ¿Quieres ver nuevamente el Escenario 2?
-            <a @click="setModal">Ver escenario 2</a>
-          </p>
-          <p>
-            Mira el video (a la derecha de la pantalla) para saber cómo
-            responder la pregunta 4
-          </p>
+          <h1>Escenario 2 → Pregunta 1: Descubre el patrón del fantasma</h1>
+          <p>Ambos han intentado los siguientes caminos, pero no han logrado llegar a la academia <strong>(ver imagen de caminos fallidos)</strong>. Iniciar en el punto azul hacia. Con esta información, descubre el patrón de desplazamiento del fantasma rosado.</p>
+          <p>¿Quieres ver nuevamente el Escenario 2? Haz clic <a @click="setModal" style="text-decoration: underline;">aquí</a>.</p>
+          <p>Si requieres ayuda para resolver el Escenario 2, mira el video ubicado en el lado derecho de la pantalla.</p>
         </div>
 
         <!-- <p class="part">Esta pregunta tiene dos partes: 1/2</p> -->

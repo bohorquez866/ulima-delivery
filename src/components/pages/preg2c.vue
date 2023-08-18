@@ -2,22 +2,13 @@
   <div class="big_container">
     <div class="titulo_escenario">
       <div class="subtitle">
-        <h1>Pregunta 5 - Parte 2: ¿Puedes generar la instrucción correcta?</h1>
-
-        <p>
-          Una vez descubierto el patrón de desplazamiento del fantasma, ¿Puedes
-          ayudarlos a generar una instrucción uniendo bloques de tal manera que
-          al seguir la secuencia pueda llegar a la academia?
-          <br />
-          <br />
-          Antes de pensar tu solución, revisa estas instrucciones
-          <a @click="setModalF">Ver instrucciones</a>
-        </p>
-        <p>
-          Mira el video (a la derecha de la pantalla) para saber cómo responder
-          la pregunta 5, parte 2.
-        </p>
+        <h1>Escenario 2 → Pregunta 5b: ¿Puedes generar la instrucción correcta?</h1>
+        <p>Una vez identificado el patrón de desplazamiento del fantasma, ¿serías capaz de ayudar a crear una secuencia de instrucciones utilizando los bloques de manera que, al seguirla la secuencia, puedan llegar a la academia? Tendrás la oportunidad de probar tu solución antes de guardarla y avanzar a la siguiente pregunta.</p>
+        <p>Antes de pensar tu solución, revisa <a @click="setModalF" style="text-decoration: underline;">estas indicaciones</a>.</p>
+        <p>¿Quieres ver nuevamente el Escenario 2? Haz clic <a @click="setModalScenario" style="text-decoration: underline;">aquí</a>.</p>
+        <p>Si requieres ayuda para resolver el Escenario 2, mira el video ubicado en el lado derecho de la pantalla.</p>
       </div>
+
       <p class="ver_sc part">Esta pregunta tiene dos partes: 2/2</p>
       <div class="modal modalThree" v-if="modalIsActive">
         <div class="submodal">
@@ -28,6 +19,16 @@
           >
         </div>
       </div>
+      
+      <div class="modal modalTwo" v-if="modalScenarioIsActive">
+          <div class="submodal">
+            <modalTwo setModal="setModal"
+              ><button class="btn_model" @click="setModalScenario">
+                Cerrar
+              </button></modalTwo
+            >
+          </div>
+        </div>
 
       <div class="modal floatingModal" v-if="modalIsActiveF">
         <div class="submodal">
@@ -346,6 +347,7 @@
 
 <script>
 import { saveFirebaseData } from '../../firebase/saveFirebaseData';
+import modalTwo from '../pages/modal_2.vue';
 import modalThree from '../pages/modal_3.vue';
 import floatingModal from '../pages/floatingModal5p2.vue';
 // import Konva from "konva";
@@ -519,6 +521,7 @@ const OPTIMAL_SOLUTION = 2; // solucion 3 es la optima; index = 2 en el array
 
 export default {
   components: {
+    modalTwo,
     modalThree,
     floatingModal,
   },
@@ -527,6 +530,7 @@ export default {
       isSolutionSaved: false,
       modalIsActive: false,
       modalIsActiveF: false,
+      modalScenarioIsActive: false,
       targets: generateTargets(),
       anguloDir: {
         up: 90,
@@ -609,6 +613,9 @@ export default {
     },
     setModalF() {
       this.modalIsActiveF = !this.modalIsActiveF;
+    },
+    setModalScenario() {
+      this.modalScenarioIsActive = !this.modalScenarioIsActive;
     },
     
     addVariableAccordingToBlockType(blockId) {

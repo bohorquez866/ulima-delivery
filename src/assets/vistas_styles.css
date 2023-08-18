@@ -19,6 +19,9 @@ border-radius: 10px;
 #app {
   align-self: center;
   height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .big_container {
@@ -33,7 +36,8 @@ border-radius: 10px;
 }
 
 .titulo_escenario {
-  width: 98%;
+  width: 100%;
+  padding-inline: 15px;
   display: flex;
   justify-content: space-between;
 }

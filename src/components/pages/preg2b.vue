@@ -3,21 +3,10 @@
     <div class="big_container">
       <div class="titulo_escenario">
         <div class="subtitle">
-          <h1>Pregunta 5 - ¡Traza el camino a la academia!</h1>
-
-          <p>
-            Una vez descubierto el patrón de desplazamiento del fantasma,
-            ¿Puedes ayudarlos a trazar un camino seguro sin ser atrapado por el
-            fantasma?
-            <br />
-            <br />
-            ¿Quieres ver nuevamente el Escenario 2?
-            <a @click="setModal">Ver escenario 2</a>
-          </p>
-          <p>
-            Mira el video (a la derecha de la pantalla) para saber cómo
-            responder la pregunta 5, parte 1
-          </p>
+          <h1>Escenario 2 → Pregunta 5a: ¡Traza el camino a la academia!</h1>
+          <p>Una vez descubierto el patrón de desplazamiento del fantasma, ¿Puedes ayudarlos a trazar un camino seguro sin ser atrapados por el fantasma?</p>
+          <p>¿Quieres ver nuevamente el Escenario 2? Haz clic <a @click="setModal" style="text-decoration: underline;">aquí</a>.</p>
+          <p>Si requieres ayuda para resolver el Escenario 2, mira el video ubicado en el lado derecho de la pantalla.</p>
         </div>
         <p class="ver_sc part">Esta pregunta tiene dos partes: 1/2</p>
         <div class="modal modalTwo" v-if="modalIsActive">

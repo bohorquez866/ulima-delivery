@@ -2,16 +2,11 @@
   <div class="big_container">
     <div class="titulo_escenario">
       <div class="subtitle">
-        <h1>Pregunta 6: ¿Qué solución escogerías?</h1>
+        <h1>Escenario 2 → Pregunta 6c: ¿Qué solución escogerías?</h1>
 
-        <p>
-          Finalmente, Pacman y Carita Feliz tienen cada uno una propuesta de camino a seguir para
-          trasladarse de manera segura; sin embargo, no saben si elegir una de sus propuestas o la
-          tuya propuesta en la Pregunta 5 (Parte 1).
-          <br />
-          <br />
-          ¿Cuál consideras que es la mejor? <strong>Argumenta tu respuesta.</strong>
-        </p>
+        <p>Para concluir, tanto Carita Feliz (recuadro azul), Pacman (recuadro amarillo) y tú (recuadro verde) han elaborado una propuesta de ruta para trasladarse de manera segura. No obstante, los personajes se encuentran en una encrucijada al no estar seguros si deberían optar por su propuesta o considerar la tuya planteada en la Pregunta 5a.</p>
+        <p>¿Cuál de estas opciones crees que es la más adecuada? Te invito a argumentar tu respuesta para llegar a una decisión informada.</p>
+        <p><strong>Dale click al “+” para ver la solución de cada uno.</strong></p>
       </div>
       <p class="ver_sc part">Esta pregunta tiene tres partes: 3/3</p>
       <div class="modal" v-if="modalIsActive">

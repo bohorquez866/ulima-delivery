@@ -2,21 +2,10 @@
   <div class="big_container">
     <div class="titulo_escenario">
       <div class="subtitle">
-        <h1>Pregunta 2</h1>
-        <p>
-          Al siguiente día, Pacman y Carita Feliz tienen examen de Lenguaje,
-          pero Pacman recordó que había olvidado recoger su libro en su casa;
-          por lo que ambos retornan a su casa. Traza un camino para que ambos
-          lleguen a tiempo al colegio luego de recoger la tarea de Pacman.
-          <br />
-          <br />
-          ¿Quieres ver nuevamente el Escenario 1?
-          <a @click="setModal">Ver escenario</a>
-        </p>
-        <p>
-          Mira el video (a la derecha de la pantalla) para saber cómo responder
-          a las 3 primeras preguntas del Escenario 1.
-        </p>
+        <h1>Escenario 1 → Pregunta 2</h1>
+        <p>Al día siguiente, Pacman y Carita Feliz se enfrentan a un examen de Comunicaciones. Sin embargo, Pacman recuerda en el último momento que ha dejado su libro en casa (punto amarillo), lo que los obliga a regresar a su hogar desde el colegio. <strong>Tu tarea consiste en trazar un camino que asegure que ambos lleguen puntualmente al colegio después de recoger el libro de Pacman.</strong> El recorrido deseado es desde el punto rojo al punto amarillo y de ahí al punto azul. ¡Manos a la obra!</p>
+        <p>¿Quieres ver nuevamente el Escenario 1? Haz clic <a @click="setModal" style="text-decoration: underline;">aquí</a>.</p>
+        <p>Si requieres ayuda para resolver el Escenario 1, mira el video ubicado en el lado derecho de la pantalla.</p>
       </div>
       <div class="modal" v-if="modalIsActive">
         <div class="submodal">

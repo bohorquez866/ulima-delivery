@@ -4,17 +4,17 @@
     <div class="fila">
         <div class="content_intro">
             <p>
-                Luego de realizar sus actividades en el colegio, Pacman y Carita Feliz continúan sus estudios en una academia preuniversitaria.
+                Después de completar sus actividades en la escuela, Pacman y Carita Feliz continúan su educación en una academia preuniversitaria.
                 <br>
                 <br>
-                El jueves, cuando estaban a punto de llegar a la academina, Pacman y Carita Feliz se encontraron con un problema, hay un <strong>fantasma rosado</strong> que no les permite seguir avanzando. Ellos no saben por donde ir y te piden tu ayuda para que les indiques un camino seguro hacia la academia. 
+                El jueves, mientras se acercaban a la academia, se toparon con un desafío: <strong>un fantasma rosado</strong> les bloqueaba el camino, impidiéndoles avanzar. Perdidos y sin una ruta clara, solicitan tu asistencia para indicarles un camino seguro hacia la academia. 
                 <br>
                 <br>
-                Pacman te brinda la siguiente información:
+                Pacman ofrece la siguiente información:
             </p>
 
             <p>
-                <strong>A.</strong> Pacman y Carita Feliz, se pueden mover en las siguientes direcciones: <strong>ARRIBA, ABAJO, IZQUIERDA Y DERECHA; adicionalmente,</strong> tienen <strong>2 movimientos</strong> en <strong>DIAGONAL:</strong> Uno a la derecha hacia arriba o abajo, y otro a la izquierda hacia arriba o abajo.
+                <strong>A.</strong> Pacman y Carita Feliz pueden moverse en cuatro direcciones: <strong>ARRIBA, ABAJO, IZQUIERDA y DERECHA.</strong> Además, tienen dos movimientos diagonales: <strong>uno hacia arriba o abajo en dirección derecha</strong>, y <strong>otro hacia arriba o abajo en dirección izquierda</strong>.
             </p>
             <div class="gif_box">
                 <img class="gif_element" src="../../assets/Gifs/a01.gif" alt="Gif 1">
@@ -24,11 +24,11 @@
                 <img class="gif_element" src="../../assets/Gifs/a05.gif" alt="Gif 5">
             </div>
             <p>
-                <strong>B.</strong> Si chocan con el fantasma, <strong>ya NO podrán seguir avanzando.</strong>
+                <strong>B.</strong> Si chocan con el fantasma, <strong>NO podrán seguir avanzando.</strong>
                 <br>
             </p>
             <p>
-                <strong>C.</strong> Cada vez que Pacman y Carita Feliz hacen un movimiento, el fantasma realiza un movimiento siguiendo su propio patrón.
+                <strong>C.</strong> Cada vez que Pacman y Carita Feliz hacen un movimiento, el fantasma realiza un movimiento siguiendo su propio patrón de desplazamiento
             </p>
                 <div class="gif_box">
                     <img class="gif_element" src="../../assets/Gifs/c01.gif" alt="Gif C">
