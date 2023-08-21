@@ -2,18 +2,17 @@
   <div class="big_container">
     <div class="titulo_escenario">
       <div class="subtitle">
-        <h1>Pregunta 1</h1>
+        <h1>Escenario 1 → Pregunta 1</h1>
+        <p>El próximo lunes, tanto Pacman como la Carita Feliz tendrán un examen de matemáticas en el colegio. <strong>Tu objetivo es trazar un camino que les permita llegar a tiempo desde el punto rojo hasta el punto azul.</strong></p>
+        <ul>
+          <li style="display: list-item; list-style-type: circle;">Para comenzar, simplemente toca el botón “Start”.</li>
+          <li style="display: list-item; list-style-type: circle;">Si deseas explorar varias soluciones, puedes presionar “Start” para cada una y luego toca el botón “Añadir Solución” para ir guardando cada solución a tu Test. Para revisar las soluciones que has guardado, basta con hacer clic en la fila de la solución que desees ver abajo.</li>
+          <li style="display: list-item; list-style-type: circle;">Una vez que hayas evaluado todas las posibilidades y estés listo para decidir, selecciona la solución que consideres la mejor y dale clic a la fila para seleccionarla como tu solución final. Da clic en “Guardar solución” para finalizar y en “Siguiente" para pasar a la siguiente pregunta. ¡Buena suerte!</li>
+        </ul>
+        <br />
+        <p>¿Quieres ver nuevamente el Escenario 1? Haz clic <a @click="setModal" style="text-decoration: underline;">aquí</a>.</p>
         <p>
-          El lunes, Pacman y la Carita Feliz tienen examen de matemática. Traza
-          un camino para que ambos lleguen a tiempo al colegio.
-          <br />
-          <br />
-          ¿Quieres ver nuevamente el Escenario 1?
-          <a @click="setModal">Ver escenario</a>
-        </p>
-        <p>
-          Mira el video (a la derecha de la pantalla) para saber cómo responder
-          a las 3 primeras preguntas del Escenario 1.
+          Si requieres ayuda para resolver el Escenario 1, mira el video ubicado en el lado derecho de la pantalla.
         </p>
       </div>
       <div class="modal" v-if="modalIsActive">

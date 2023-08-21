@@ -2,20 +2,10 @@
   <div class="big_container">
     <div class="titulo_escenario">
       <div class="subtitle">
-        <h1>Pregunta 3</h1>
-        <p>
-          El miércoles, ambos desean llegar lo más temprano posible al salón de
-          clase; por lo que deciden en pasar por la menor cantidad de paraderos
-          de bus. ¿Será posible hacerlo? Traza el camino que deben seguir ambos
-          para tal fin.
-          <br />
-          ¿Quieres ver nuevamente el Escenario 1?
-          <a @click="setModal">Ver escenario</a>
-        </p>
-        <p>
-          Mira el video (a la derecha de la pantalla) para saber cómo responder
-          a las 3 primeras preguntas del Escenario 1.
-        </p>
+        <h1>Escenario 1 → Pregunta 3</h1>
+        <p>En busca de llegar temprano al salón de clases el miércoles, Pacman y Carita Feliz optan por tomar la ruta con la menor cantidad de paradas de autobús. <strong>Tu tarea es trazar el camino que ambos deben seguir para lograr este objetivo, partiendo desde el punto rojo y llegando al punto azul.</strong> ¡Adelante, traza esa ruta eficiente!</p>
+        <p>¿Quieres ver nuevamente el Escenario 1? Haz clic <a @click="setModal" style="text-decoration: underline;">aquí</a>.</p>
+        <p>Si requieres ayuda para resolver el Escenario 1, mira el video ubicado en el lado derecho de la pantalla.</p>
       </div>
       <div class="modal" v-if="modalIsActive">
         <div class="submodal">

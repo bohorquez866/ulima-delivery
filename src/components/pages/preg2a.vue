@@ -3,21 +3,10 @@
     <div class="big_container">
       <div class="titulo_escenario">
         <div class="subtitle">
-          <h1>Pregunta 4: Descubre el patron del fantasma</h1>
-          <p>
-            Ambos han intentado los siguientes caminos, pero no han logrado
-            llegar a la academia
-            <strong>(ver imagen)</strong>. Con esta información, descubre el
-            patrón de desplazamiento del fantasma rosado.
-            <br />
-            <br />
-            ¿Quieres ver nuevamente el Escenario 2?
-            <a @click="setModal">Ver escenario 2</a>
-          </p>
-          <p>
-            Mira el video (a la derecha de la pantalla) para saber cómo
-            responder la pregunta 4
-          </p>
+          <h1>Escenario 2 → Pregunta 1: Descubre el patrón del fantasma</h1>
+          <p>Ambos han intentado los siguientes caminos, pero no han logrado llegar a la academia <strong>(ver imagen de caminos fallidos)</strong>. Inicia en el punto azul y desplázate a los posibles puntos del camino del Fantasma (puntos verdes). Con esta información, descubre el patrón de desplazamiento del fantasma rosado.</p>
+          <p>¿Quieres ver nuevamente el Escenario 2? Haz clic <a @click="setModal" style="text-decoration: underline;">aquí</a>.</p>
+          <p>Si requieres ayuda para resolver el Escenario 2, mira el video ubicado en el lado derecho de la pantalla.</p>
         </div>
 
         <!-- <p class="part">Esta pregunta tiene dos partes: 1/2</p> -->
@@ -309,6 +298,26 @@
             </v-card-actions>
           </v-card>
         </v-dialog>
+
+        <v-dialog v-model="dialog2" max-width="290">
+          <v-card>
+            <v-card-title class="text-h5">
+              Ye!
+            </v-card-title>
+
+            <v-card-text>
+              Lo lograste
+            </v-card-text>
+
+            <v-card-actions>
+              <v-spacer></v-spacer>
+
+              <v-btn color="green darken-1" text @click="dialog2 = false">
+                Ok
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
       </div>
     </div>
     <Modal ref="modal">
@@ -567,6 +576,7 @@ export default {
       tiempoI: 0,
       tiempoF: 0,
       dialog: false,
+      dialog2: false,
       tiMatriz: 0,
       aspectos: '',
       sustentar: '',
@@ -835,6 +845,11 @@ export default {
           this.errores = this.errores + 1;
           this.dialog = true;
           val = 'no';
+        }
+        else {
+          // Si esta validación es correcta, entonces hemos llegado satisfactoriamente al final del arreglo de la ruta correcta.
+          // Esto significa que el usuario ha ingresado correctamente el patrón de fantasma y mostramos el modal.
+          if(i === this.rutaCorrecta.length - 1) this.dialog2 = true;
         }
       }
 
