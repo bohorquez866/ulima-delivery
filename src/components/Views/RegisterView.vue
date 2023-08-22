@@ -183,6 +183,7 @@ export default {
         this.dialogTerms = false;
       } else {
         // No aceptó
+        this.error = 'Debe aceptar los términos y condiciones para continuar'
         this.dialogTerms = false;
       }
     },
