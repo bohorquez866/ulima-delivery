@@ -38,64 +38,22 @@
           <br />
           <strong>Aviso: Solo para alumnos entre 15 y 17 años de edad.</strong>
         </p>
-        <!-- <router-link :to="{ name: 'Login' }">
+        <router-link :to="{ name: 'Login' }">
           <div class="over_button second_btn">
             <button class="btn_model start_btn_test">
               Iniciar Test
             </button>
           </div>
-        </router-link> -->
-        <div class="over_button second_btn">
+        </router-link>
+        <!-- <div class="over_button second_btn">
           <button class="btn_model start_btn_test" @click="dialogTerms = true">
             Iniciar Test
           </button>
-        </div>
+        </div> -->
       </div>
       <div class="slider_img-box">
         <img src="../assets/01_LandingPage/p03.svg" alt="" class="" />
       </div>
-
-      <!-- dialog terminos y condiciones -->
-      <v-dialog v-model="dialogTerms" max-width="700">
-        <v-card>
-          <v-card-title class="text-h5">
-            Términos y condiciones
-          </v-card-title>
-
-          <v-card-text>
-            <p>Has sido seleccionado para formar parte de un estudio sobre la estimación del nivel de pensamiento computacional. Para lograr los objetivos de esta investigación, te invitamos cordialmente a completar el siguiente cuestionario. Queremos enfatizar que tu participación es totalmente voluntaria. Todas las respuestas proporcionadas serán tratadas de manera confidencial y los resultados se utilizarán exclusivamente con fines científicos. Tu contribución ayudará a ampliar nuestro entendimiento en esta área de estudio.</p>
-            <p>Te proporcionaremos información adicional para que puedas tomar una decisión informada. Es esencial que comprendas que no hay ningún riesgo asociado con tu participación en este estudio. Si decides participar, por favor marca la casilla correspondiente. Ten la certeza de que tus respuestas y cualquier información personal se manejan con la máxima confidencialidad y sólo serán utilizadas para fines científicos.</p>
-            <p>La razón por la cual solicitamos tu consentimiento informado es asegurarnos de que comprendes plenamente los objetivos y posibles beneficios de este estudio. Estamos dispuestos a proporcionar cualquier información adicional que requieras para tomar una decisión informada.</p>
-
-            <v-radio-group v-model="radioGroupSelectedOption">
-              <v-radio
-                v-for="(item, index) in radioGroupOptions"  
-                :key="index"
-                :label="item"
-                :value="index"
-              ></v-radio>
-            </v-radio-group>
-
-            <p>PASOS:
-              <ol class="stepsOrderedList">
-                <li>Ingresar al test.</li>
-                <li>Darle click a <i>registrarse ahora</i>.</li>
-                <li>Cuando doy click al registrarme sale <strong>un nuevo pop-up</strong>.</li>
-                <li>En la parte inferior sale la opción: "Estoy de acuerdo en participar en el test" (Tiene que marcarlo) + Un botón que diga "Registrarme"</li>
-                <li>Una vez hecho el registro, se crea la cuenta del alumno y se guarda la info de que aceptó participar en el estudio. Luego, te redirige al espacio de Login para que el alumno ingrese sus credenciales nuevamente.</li>
-              </ol>
-              <img src="../assets/01_LandingPage/ss_signup_page.png" width="400" />
-            </p>
-          </v-card-text>
-
-          <v-card-actions>
-            <v-spacer></v-spacer>
-            <v-btn color="green darken-1" text @click="validateTermsAndConditions">
-              Hecho
-            </v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
     </section>
 
     <!-- end slider section -->
@@ -179,21 +137,7 @@ export default {
   data() {
     return {
       user: null,
-      dialogTerms: false,
-      radioGroupOptions: ['Acepto participar en el estudio.', 'No acepto participar en el estudio.'],
-      radioGroupSelectedOption: 0,
     };
-  },
-  methods: {
-    validateTermsAndConditions() {
-      if(this.radioGroupSelectedOption == 0) {
-        // aceptó los términos y condiciones
-        this.$router.push({name: 'Login'});
-      } else {
-        // No aceptó
-        this.dialogTerms = false;
-      }
-    }
   },
   mounted() {
     const auth = getAuth();
