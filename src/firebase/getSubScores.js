@@ -22,72 +22,16 @@ export async function setSub01(item) {
   const docSnap = await getDoc(docRef);
   const data = docSnap.get('data');
 
-  var borrador = 0;
-  var solucion = 0;
+  // var borrador = 0;
+  // var solucion = 0;
 
-  /////////////// get 1a
   try {
-    const pregunta1 = data['pregunta1'];
-    if (pregunta1.length === 1) {
-      dict['1a'] = 1;
-    } else if (pregunta1.length > 1) {
-      borrador = 0;
-      solucion = 0;
-      pregunta1.forEach((element) => {
-        if (element['solucion'] === 'solucion') {
-          solucion += 1;
-        } else {
-          borrador += 1;
-        }
-      });
-      if (borrador == 1 && solucion == 1) {
-        dict['1a'] = 3;
-      } else if ((borrador > 1) & (solucion == 1)) {
-        dict['1a'] = 5;
-      }
-    }
+    /////////////// get 1a
+    countDraftsAndSolutions(data['pregunta1'], dict, '1a');
     /////////////// get 1b
-    const pregunta2 = data['pregunta2'];
-    if (pregunta2.length === 1) {
-      dict['1b'] = 1;
-    } else if (pregunta2.length > 1) {
-      borrador = 0;
-      solucion = 0;
-      pregunta2.forEach((element) => {
-        if (element['solucion'] === 'solucion') {
-          solucion += 1;
-        } else {
-          borrador += 1;
-        }
-      });
-
-      if (borrador == 1 && solucion == 1) {
-        dict['1b'] = 3;
-      } else if ((borrador > 1) & (solucion == 1)) {
-        dict['1b'] = 5;
-      }
-    }
+    countDraftsAndSolutions(data['pregunta2'], dict, '1b');
     /////////////// get 1c
-    const pregunta3 = data['pregunta3'];
-    if (pregunta3.length === 1) {
-      dict['1c'] = 1;
-    } else if (pregunta3.length > 1) {
-      borrador = 0;
-      solucion = 0;
-      pregunta3.forEach((element) => {
-        if (element['solucion'] === 'solucion') {
-          solucion += 1;
-        } else {
-          borrador += 1;
-        }
-      });
-
-      if (borrador == 1 && solucion == 1) {
-        dict['1c'] = 3;
-      } else if ((borrador > 1) & (solucion == 1)) {
-        dict['1c'] = 5;
-      }
-    }
+    countDraftsAndSolutions(data['pregunta3'], dict, '1c');
     ////////////// get 2a
     const pregunta4 = data['pregunta4'];
     if (pregunta4.length === 1) {
@@ -106,6 +50,7 @@ export async function setSub01(item) {
         dict['2b'] = 3;
       }
     }
+
     await updateDoc(doc(db, 'subs', item), {
       sub01: dict,
     });
@@ -118,6 +63,27 @@ export async function setSub01(item) {
   await updateDoc(doc(db, 'users', item), {
     process: true,
   });
+}
+
+const countDraftsAndSolutions = (question, dict, key) => {
+  if (question.length === 1) {
+    dict[key] = 1;
+  } else if (question.length > 1) {
+    let borrador = 0;
+    let solucion = 0;
+    question.forEach((element) => {
+      if (element['solucion'] === 'solucion') {
+        solucion += 1;
+      } else {
+        borrador += 1;
+      }
+    });
+    if (borrador == 1 && solucion == 1) {
+      dict[key] = 3;
+    } else if ((borrador > 1) & (solucion == 1)) {
+      dict[key] = 5;
+    }
+  }
 }
 
 function getIndiceMejora(respuestas, item, prevQuestionAnswers, valorOptimo) {
@@ -190,10 +156,13 @@ export async function setSub02(item) {
     const pregunta1 = data['pregunta1'];
     let IM = getIndiceMejora(pregunta2, item, pregunta1, 24);
     dict['1b'] = getIMScore(IM);
-    console.log('Score: ', dict['1b']);
+    // console.log('Score: ', dict['1b']);
     const pregunta3 = data['pregunta3'];
     IM = getIndiceMejora(pregunta3, item, pregunta2, 25);
     dict['1c'] = getIMScore(IM);
+
+    const pregunta6p2 = data['pregunta6p3']
+    console.log(`pregunta6p2 ${item}`, pregunta6p2);
     await updateDoc(doc(db, 'subs', item), {
       sub02: dict,
     });
