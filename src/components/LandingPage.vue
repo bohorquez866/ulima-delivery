@@ -45,6 +45,11 @@
             </button>
           </div>
         </router-link>
+        <!-- <div class="over_button second_btn">
+          <button class="btn_model start_btn_test" @click="dialogTerms = true">
+            Iniciar Test
+          </button>
+        </div> -->
       </div>
       <div class="slider_img-box">
         <img src="../assets/01_LandingPage/p03.svg" alt="" class="" />
@@ -145,4 +150,8 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
 @import "../assets/style.css";
 @import "../assets/responsive.css";
+
+.stepsOrderedList li{
+  display: list-item;
+}
 </style>
