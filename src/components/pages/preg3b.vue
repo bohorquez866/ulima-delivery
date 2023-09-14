@@ -497,6 +497,7 @@ export default {
         solucion: 'x',
         cantNodos: 'x',
         peso: 'x',
+        respElegida: 'x',
       });
       this.contador += 1;
       this.contS += 1;

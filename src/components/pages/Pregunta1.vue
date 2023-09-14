@@ -649,6 +649,7 @@ export default {
         for: '-',
         parte: 1,
         condicional: '-',
+        respElegida: 'x',
       });
       this.contador += 1;
       this.contS += 1;

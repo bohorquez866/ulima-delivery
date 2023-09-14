@@ -196,7 +196,7 @@ export default {
       modalIsActive3: false,
       modalIsActive4: false,
       id: this.$route.params.id,
-      eleccion: "",
+      eleccion: "-",
       text: '',
       aspectos: [],
       sustentar: "",
@@ -288,7 +288,7 @@ export default {
         cumplio: this.eleccion != '' ? 'si' : 'no',
         optima: this.opt,
         identProblema: "x",
-        aspectos: this.aspectos,
+        aspectos: this.aspectos.length >= 1 ? this.aspectos : ['-'],
         sustentar: this.sustentar,
         errores: "x",
         probado: "x",
@@ -300,6 +300,7 @@ export default {
         solucion: "x",
         cantNodos: "x",
         peso: "x",
+        respElegida: this.eleccion,
       });
       this.contador += 1;
       this.contS += 1;

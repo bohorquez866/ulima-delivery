@@ -161,8 +161,26 @@ export async function setSub02(item) {
     IM = getIndiceMejora(pregunta3, item, pregunta2, 25);
     dict['1c'] = getIMScore(IM);
 
-    const pregunta6p2 = data['pregunta6p3']
-    console.log(`pregunta6p2 ${item}`, pregunta6p2);
+    // 2c
+    const pregunta5 = data['pregunta5'];
+    const pregunta5p2 = data['pregunta5p2'];
+    const pregunta6p3 = data['pregunta6p3'];
+
+    if(
+      (pregunta5[0]['cumplio'] == "no" && pregunta5p2[0]['cumplio'] == "no") || 
+      (pregunta5[0]['cumplio'] == "si" && pregunta5p2[0]['cumplio'] == "si" && pregunta6p3[0]['respElegida'] == "misol")
+    ) {
+      dict['2c'] = 1;
+    } else if (
+      pregunta5[0]['cumplio'] == "si" && (pregunta6p3[0]['respElegida'] == "carita" || pregunta6p3[0]['respElegida'] == "pacman")
+    ) {
+      dict['2c'] = 3;
+    } else if (
+      pregunta5p2[0]['cumplio'] == "si" && pregunta6p3[0]['respElegida'] == "pacman"
+    ) {
+      dict['2c'] = 5;
+    }
+    
     await updateDoc(doc(db, 'subs', item), {
       sub02: dict,
     });
@@ -190,89 +208,33 @@ export async function setSub03(item) {
   const docRef = doc(db, 'users', item_id);
   const docSnap = await getDoc(docRef);
   const data = docSnap.get('data');
-  var borrador = 0;
-  var solucion = 0;
-  /////////////// get 1a
   try {
-    const pregunta1 = data['pregunta1'];
-    if (pregunta1.length === 1) {
-      dict['1a'] = 1;
-    } else if (pregunta1.length > 1) {
-      borrador = 0;
-      solucion = 0;
-      pregunta1.forEach((element) => {
-        if (element['solucion'] === 'solucion') {
-          solucion += 1;
-        } else {
-          borrador += 1;
-        }
-      });
-      if (borrador == 1 && solucion == 1) {
-        dict['1a'] = 3;
-      } else if ((borrador > 1) & (solucion == 1)) {
-        dict['1a'] = 5;
-      }
-    }
+    /////////////// get 1a
+    checkCumplioAndOptimo(data['pregunta1'], dict, '1a');
     /////////////// get 1b
-    const pregunta2 = data['pregunta2'];
-    if (pregunta2.length === 1) {
-      dict['1b'] = 1;
-    } else if (pregunta2.length > 1) {
-      borrador = 0;
-      solucion = 0;
-      pregunta2.forEach((element) => {
-        if (element['solucion'] === 'solucion') {
-          solucion += 1;
-        } else {
-          borrador += 1;
-        }
-      });
-
-      if (borrador == 1 && solucion == 1) {
-        dict['1b'] = 3;
-      } else if ((borrador > 1) & (solucion == 1)) {
-        dict['1b'] = 5;
-      }
-    }
+    checkCumplioAndOptimo(data['pregunta2'], dict, '1b');
     /////////////// get 1c
-    const pregunta3 = data['pregunta3'];
-    if (pregunta3.length === 1) {
-      dict['1c'] = 1;
-    } else if (pregunta3.length > 1) {
-      borrador = 0;
-      solucion = 0;
-      pregunta3.forEach((element) => {
-        if (element['solucion'] === 'solucion') {
-          solucion += 1;
-        } else {
-          borrador += 1;
-        }
-      });
-
-      if (borrador == 1 && solucion == 1) {
-        dict['1c'] = 3;
-      } else if ((borrador > 1) & (solucion == 1)) {
-        dict['1c'] = 5;
-      }
-    }
+    checkCumplioAndOptimo(data['pregunta3'], dict, '1c');
     ////////////// get 2a
     const pregunta4 = data['pregunta4'];
-    if (pregunta4.length === 1) {
-      if (pregunta4[0]['cumplio'] === 'si') {
-        dict['2a'] = 5;
-      } else {
-        dict['2a'] = 3;
-      }
-    }
-    ////////////// get 2a
+    if(pregunta4[0]['cumplio'] == 'no') dict['2a'] = 1;
+    else if(pregunta4[0]['cumplio'] == 'si' && pregunta4[0]['errores'] >= 1) dict['2a'] = 3;
+    else if(pregunta4[0]['cumplio'] == 'si' && pregunta4[0]['errores'] == 0) dict['2a'] = 5;
+    ////////////// get 2b
     const pregunta5 = data['pregunta5'];
-    if (pregunta5.length === 1) {
-      if (pregunta5[0]['cumplio'] === 'si') {
-        dict['2b'] = 5;
-      } else {
-        dict['2b'] = 3;
-      }
-    }
+    if(pregunta5[0]['cumplio'] == 'no') dict['2b'] = 1;
+    else if(pregunta5[0]['cumplio'] == 'si' && pregunta4[0]['errores'] >= 1) dict['2b'] = 3;
+    else if(pregunta5[0]['cumplio'] == 'si' && pregunta4[0]['errores'] == 0) dict['2b'] = 5;
+    ////////////// get 2c
+    const pregunta6 = data['pregunta6'];
+    const pregunta6p2 = data['pregunta6p2'];
+    if(pregunta6[0]['cumplio'] == 'no' && pregunta6p2[0]['cumplio'] == 'no') dict['2c'] = 1;
+    else if(
+      (pregunta6[0]['cumplio'] == 'si' && pregunta6p2[0]['cumplio'] == 'no') || 
+      (pregunta6[0]['cumplio'] == 'no' && pregunta6p2[0]['cumplio'] == 'si')
+    ) dict['2c'] = 3;
+    else if(pregunta6[0]['cumplio'] == 'si' && pregunta6p2[0]['cumplio'] == 'si') dict['2c'] = 5;
+
     await updateDoc(doc(db, 'subs', item), {
       sub03: dict,
     });
@@ -283,6 +245,23 @@ export async function setSub03(item) {
   }
 
   return docSnap.get('admin');
+}
+
+function checkCumplioAndOptimo (pregunta, dict, key) {
+  if (pregunta.length == 0) {
+    dict[key] = 1;
+  } else {
+    let solution;
+    for (let i = 0; i < pregunta.length; i++) {
+      if (pregunta[i]['solucion'] === 'solucion') {
+        solution = pregunta[i];
+        break;
+      }
+    }
+    if(solution['cumplio'] == 'F' && solution['optima'] == 'F') dict[key] = 1;
+    else if(solution['cumplio'] == 'T' && solution['optima'] == 'F') dict[key] = 3;
+    else if(solution['cumplio'] == 'T' && solution['optima'] == 'T') dict[key] = 5;
+  }
 }
 
 export async function setSub04(item) {
