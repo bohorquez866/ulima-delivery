@@ -282,21 +282,21 @@ export async function setSub04(item) {
   try {
     /////////////// get 5
     const pregunta5 = data['pregunta5'];
-    const errores = pregunta5[0].error;
-
-    if (errores == 0) {
-      dict['2b'] = 5;
-    } else if (errores > 0) {
-      dict['2b'] = 3;
+    if(pregunta5[0].cumplio == "si") {
+      if(pregunta5[0].errores > 0) {
+        dict['2b'] = 3;
+      } else {
+        dict['2b'] = 5;
+      }
     }
     /////////////// get 6
     const pregunta6 = data['pregunta6'];
     const pregunta6p2 = data['pregunta6p2'];
-    const errorTot = pregunta6[0].error + pregunta6p2[0].error;
-    if (errorTot == 0) {
-      dict['2c'] = 5;
-    } else if (errorTot > 0) {
+    if((pregunta6[0].cumplio == "si" && pregunta6p2[0].cumplio == "no") || (pregunta6[0].cumplio == "no" && pregunta6p2[0].cumplio == "si")) {
       dict['2c'] = 3;
+    }
+    else if (pregunta6[0].cumplio == "si" && pregunta6p2[0].cumplio == "si") {
+      dict['2b'] = 5;
     }
 
     await updateDoc(doc(db, 'subs', item), {
@@ -328,25 +328,26 @@ export async function setSub05(item) {
   try {
     const pregunta5p2 = data['pregunta5p2'];
     const condicional = pregunta5p2[0].condicional;
-    const repetir = pregunta5p2[0].for;
     const cumplio = pregunta5p2[0].cumplio;
+    const optima = pregunta5p2[0].optima;
 
-    if (condicional < 2) {
-      dict['2b'] = 1;
-    } else if (condicional >= 2 && cumplio != 'si') {
-      dict['2b'] = 3;
-    } else if (cumplio === 'si' && condicional > 0 && repetir > 0) {
-      dict['2b'] = 5;
+    if(cumplio == "si") {
+      if (condicional < 2) {
+        dict['2b'] = 1;
+      } else if (condicional >= 2 && optima != 'si') {
+        dict['2b'] = 3;
+      } else if (optima == 'si') {
+        dict['2b'] = 5;
+      }
     }
     /////////////// get 6
     const pregunta6 = data['pregunta6'];
     const cumplioP6 = pregunta6[0].cumplio;
-    if (condicional < 2) {
-      dict['2c'] = 1;
-    } else if (cumplioP6 != 'si') {
+    if(cumplioP6 == 'si'){
       dict['2c'] = 3;
-    } else if (cumplioP6 === 'si' && condicional > 0 && repetir > 0) {
-      dict['2c'] = 5;
+      if(optima == 'si') {
+        dict['2c'] = 5;
+      }
     }
 
     await updateDoc(doc(db, 'subs', item), {

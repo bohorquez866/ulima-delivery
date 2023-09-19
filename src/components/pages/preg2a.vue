@@ -3,7 +3,7 @@
     <div class="big_container">
       <div class="titulo_escenario">
         <div class="subtitle">
-          <h1>Escenario 2 → Pregunta 1: Descubre el patrón del fantasma</h1>
+          <h1>Escenario 2 → Pregunta 4: Descubre el patrón del fantasma</h1>
           <p>Ambos han intentado los siguientes caminos, pero no han logrado llegar a la academia <strong>(ver imagen de caminos fallidos)</strong>. Inicia en el punto azul y desplázate a los posibles puntos del camino del Fantasma (puntos verdes). Con esta información, descubre el patrón de desplazamiento del fantasma rosado.</p>
           <p>¿Quieres ver nuevamente el Escenario 2? Haz clic <a @click="setModal" style="text-decoration: underline;">aquí</a>.</p>
           <p>Si requieres ayuda para resolver el Escenario 2, mira el video ubicado en el lado derecho de la pantalla.</p>
