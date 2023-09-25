@@ -603,6 +603,7 @@ export default {
       dev: 0,
       errores: 0,
       probado: 0,
+      respElegida: 'x',
       id: this.$route.params.id,
     };
   },
@@ -676,6 +677,7 @@ export default {
         this.cum = 'si';
         this.probado = this.probado + 1;
         this.opt = OPTIMAL_SOLUTION === indexOfSolution ? 'si' : 'no';
+        this.respElegida = indexOfSolution.toString();
         alert('Respuesta correcta');
       } else {
         this.probado = this.probado + 1;
@@ -737,7 +739,7 @@ export default {
         solucion: 'x',
         cantNodos: 'x',
         peso: 'x',
-        respElegida: 'x',
+        respElegida: this.respElegida,
       });
       this.contador += 1;
       this.contS += 1;
