@@ -98,17 +98,37 @@
           <h3>Aspectos Importantes</h3>
         </div>
       </label>
-      <textarea
+      <!-- <textarea
         class="text_box"
         id="aspectos"
         name="input-7-1"
         type="text"
         v-model="aspectos"
         placeholder="Aspectos..."
-      ></textarea>
+      ></textarea> -->
+      <input
+        class="text-field"
+        @change="addToList"
+        id="aspectos"
+        name="input-7-1"
+        value=""
+        type="text"
+        v-model="text"
+        placeholder="Aspectos..."
+      />
+      <!-- <button @click="addToList">add</button> -->
+
+      <ul>
+        <li v-for="(item, index) in aspectos" :key="index">
+          <span>
+            <span class="">{{ item }}</span>
+          </span>
+          <button @click="deleteFromList(index)">Eliminar</button>
+        </li>
+      </ul>
 
       <label class="label_end" for="input-7-1">
-        <div class="question_logo">
+        <div class="question_logo" style="margin-top: 15px;">
           <img src="../../assets/AvisosDeRespuesta/i02.png" alt="Sustentar solución" />
           <h3 class="idp_title">Sustentar solución:</h3>
         </div>
@@ -120,6 +140,7 @@
         label="Aspectos Importantes"
         value=""
         v-model="sustentar"
+        placeholder="Sustenta..."
       ></textarea>
     </div>
 
@@ -175,8 +196,9 @@ export default {
       modalIsActive3: false,
       modalIsActive4: false,
       id: this.$route.params.id,
-      eleccion: "",
-      aspectos: "",
+      eleccion: "-",
+      text: '',
+      aspectos: [],
       sustentar: "",
       respuestas: [],
       pressedC: false,
@@ -199,6 +221,13 @@ export default {
     },
     setModal4() {
       this.modalIsActive4 = !this.modalIsActive4;
+    },
+    addToList() {
+      this.aspectos.unshift(this.text);
+      this.text = '';
+    },
+    deleteFromList(index) {
+      this.aspectos.splice(index, 1);
     },
     guardarSolucion: function(e) {
       this.eleccion = e.currentTarget.getAttribute("id");
@@ -259,7 +288,7 @@ export default {
         cumplio: this.eleccion != '' ? 'si' : 'no',
         optima: this.opt,
         identProblema: "x",
-        aspectos: this.aspectos,
+        aspectos: this.aspectos.length >= 1 ? this.aspectos : ['-'],
         sustentar: this.sustentar,
         errores: "x",
         probado: "x",
@@ -271,6 +300,7 @@ export default {
         solucion: "x",
         cantNodos: "x",
         peso: "x",
+        respElegida: this.eleccion,
       });
       this.contador += 1;
       this.contS += 1;

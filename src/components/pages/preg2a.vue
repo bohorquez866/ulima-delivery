@@ -3,7 +3,7 @@
     <div class="big_container">
       <div class="titulo_escenario">
         <div class="subtitle">
-          <h1>Escenario 2 → Pregunta 1: Descubre el patrón del fantasma</h1>
+          <h1>Escenario 2 → Pregunta 4: Descubre el patrón del fantasma</h1>
           <p>Ambos han intentado los siguientes caminos, pero no han logrado llegar a la academia <strong>(ver imagen de caminos fallidos)</strong>. Inicia en el punto azul y desplázate a los posibles puntos del camino del Fantasma (puntos verdes). Con esta información, descubre el patrón de desplazamiento del fantasma rosado.</p>
           <p>¿Quieres ver nuevamente el Escenario 2? Haz clic <a @click="setModal" style="text-decoration: underline;">aquí</a>.</p>
           <p>Si requieres ayuda para resolver el Escenario 2, mira el video ubicado en el lado derecho de la pantalla.</p>
@@ -781,6 +781,7 @@ export default {
         solucion: 'x',
         cantNodos: 'x',
         peso: 'x',
+        respElegida: 'x',
       });
       this.contador += 1;
       this.contS += 1;
@@ -840,16 +841,21 @@ export default {
     },
     validarSolucion() {
       var val = 'si';
-      for (var i = 0; i < this.rutaTemp.length; i++) {
-        if (this.rutaTemp[i] != this.rutaCorrecta[i]) {
-          this.errores = this.errores + 1;
-          this.dialog = true;
-          val = 'no';
-        }
-        else {
-          // Si esta validación es correcta, entonces hemos llegado satisfactoriamente al final del arreglo de la ruta correcta.
-          // Esto significa que el usuario ha ingresado correctamente el patrón de fantasma y mostramos el modal.
-          if(i === this.rutaCorrecta.length - 1) this.dialog2 = true;
+      console.log(this.rutaTemp);
+      if(this.rutaTemp.length <= 1){
+        val = 'no';
+      } else {
+        for (var i = 0; i < this.rutaTemp.length; i++) {
+          if (this.rutaTemp[i] != this.rutaCorrecta[i]) {
+            this.errores = this.errores + 1;
+            this.dialog = true;
+            val = 'no';
+          }
+          else {
+            // Si esta validación es correcta, entonces hemos llegado satisfactoriamente al final del arreglo de la ruta correcta.
+            // Esto significa que el usuario ha ingresado correctamente el patrón de fantasma y mostramos el modal.
+            if(i === this.rutaCorrecta.length - 1) this.dialog2 = true;
+          }
         }
       }
 
