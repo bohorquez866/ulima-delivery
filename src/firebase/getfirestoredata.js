@@ -125,17 +125,81 @@ function getAspAndJustScore(asp, just) {
 }
 
 function getSub13Escenary1Score(answers, asp) {
-  let isSolved = answers.filter(({ cumplio }) => cumplio === 'T').length > 0;
-  let borradores = answers.length;
-  let mistakes = answers[answers.length - 1].errores;
+  let solution = answers.find(({ solucion }) => solucion === 'solucion');
+  // let isSolved = answers.filter(({ cumplio }) => cumplio === 'T').length > 0; // TODO: Preguntar si es que la sol debe haber sido seleccionada como "solucion"
+  // let borradores = answers.length;
+  let drafts = answers.filter(({ solucion }) => solucion === 'borrador').length; // Nuevo
+  // let mistakes = answers[answers.length - 1].errores;
+  let mistakes = solution ? solution.errores : 0;
   let isAspFull = [3, 4, 5].includes(asp);
-  return isSolved && borradores >= 2 && mistakes === 0 && isAspFull
+
+  if (solution) {
+    return solution.cumplio === "T" && drafts >= 2 && mistakes === 0 && isAspFull
     ? 5
-    : borradores === 1 && isSolved
+    : drafts <= 1 && solution.cumplio === "T" && mistakes >= 0
     ? 3
-    : isSolved
+    : solution.cumplio === "T"
     ? 1
     : 0;
+  } else return 0;
+  // return solution.cumplio === "T" && drafts >= 2 && mistakes === 0 && isAspFull
+  //   ? 5
+  //   : drafts === 1 && isSolved
+  //   ? 3
+  //   : isSolved
+  //   ? 1
+  //   : 0;
+}
+
+const subs08_1a = (student, subs07Obj) => {
+  if (subs07Obj['1a'] == 1) return 1;
+  let resp = undefined;
+  for (let i = 0; i < student.data.pregunta1.length; i++) {
+    if(student.data.pregunta1[i].solucion == 'solucion') {
+      resp = student.data.pregunta1[i];
+    }
+  }
+  if(resp == undefined) return 3;
+  else return 5;
+}
+
+const subs08_2a = (student, subs07Obj) => {
+  if (subs07Obj['2a'] == 1) return 1;
+  else {
+    if (student.data.pregunta4.length >= 1) {
+      if (student.data.pregunta4[0].cumplio == "no") return 1;
+      else {
+        if (student.data.pregunta4[0].errores >= 5) return 3; // TODO: Preguntar a Amadeo pq dice mayor a y menor a pero no igual en el excel
+        else return 5;
+      }
+    } else return 1;
+  }
+}
+
+const subs08_2b = (student, subs07Obj) => {
+  if (subs07Obj['2b'] == 1) return 1;
+  else {
+    if (student.data.pregunta5.length >= 1) {
+      if (student.data.pregunta5[0].cumplio == "no") return 1;
+      else {
+        if (student.data.pregunta5[0].errores >= 5) return 3;
+        else return 5;
+      }
+    } else return 1;
+  }
+}
+
+const subs08_2c = (student, subs07Obj) => {
+  if (subs07Obj['2c'] == 1) return 1;
+  else {
+    if (student.data.pregunta6p3.length >= 1) {
+      if (student.data.pregunta6p3[0].cumplio == "no") return 1;
+      else {
+        if (student.data.pregunta6p3[0].optima == "no") return 3;
+        else return 5;
+      }
+    } else return 1;
+  }
 }
 
 export async function setStudentGrades(id, grades) {
@@ -143,47 +207,48 @@ export async function setStudentGrades(id, grades) {
   const subsRef = doc(db, 'subs', id);
   const docSnap = await getDoc(usersRef);
   let student = docSnap.data();
+  const subs07Obj = {
+    '1a': parseInt(grades.pregunta1.aspecto || 0), // P.ASP01
+    '1b': parseInt(grades.pregunta2.aspecto || 0), // P.ASP02
+    '1c': parseInt(grades.pregunta3.aspecto || 0), // P.ASP03
+    '2a': parseInt(grades.pregunta4.aspecto || 0), // P.ASP04
+    '2b': parseInt(grades.pregunta5.aspecto || 0), // P.ASP05
+    '2c': parseInt(grades.pregunta6p3.aspecto || 0), // P.ASP06
+  };
   let subs = {
-    subs07: {
-      '1a': parseInt(grades.pregunta1.aspecto || 0),
-      '1b': parseInt(grades.pregunta2.aspecto || 0),
-      '1c': parseInt(grades.pregunta3.aspecto || 0),
-      '2a': parseInt(grades.pregunta4.aspecto || 0),
-      '2b': parseInt(grades.pregunta5.aspecto || 0),
-      '2c': parseInt(grades.pregunta6p3.aspecto || 0),
-    },
-    subs08: {
-      '1a': parseInt(grades.pregunta1.aspecto || 0),
+    sub07: subs07Obj,
+    sub08: {
+      '1a': subs08_1a(student, subs07Obj),
       '1b': 0,
       '1c': 0,
-      '2a': parseInt(grades.pregunta4.aspecto || 0),
-      '2b': parseInt(grades.pregunta5.aspecto || 0),
-      '2c': parseInt(grades.pregunta6p3.aspecto || 0),
+      '2a': subs08_2a(student, subs07Obj),
+      '2b': subs08_2b(student, subs07Obj),
+      '2c': subs08_2c(student, subs07Obj),
     },
-    subs11: {
+    sub11: {
       '1a': 0,
       '1b': getAspAndJustScore(
-        parseInt(grades.pregunta2.aspecto || 0),
+        subs07Obj['1b'],
         parseInt(grades.pregunta2.justificacion || 0),
       ),
       '1c': getAspAndJustScore(
-        parseInt(grades.pregunta3.aspecto || 0),
+        subs07Obj['1c'],
         parseInt(grades.pregunta3.justificacion || 0),
       ),
       '2a': getAspAndJustScore(
-        parseInt(grades.pregunta4.aspecto || 0),
+        subs07Obj['2a'],
         parseInt(grades.pregunta4.justificacion || 0),
       ),
       '2b': getAspAndJustScore(
-        parseInt(grades.pregunta5.aspecto || 0),
+        subs07Obj['2b'],
         parseInt(grades.pregunta5.justificacion || 0),
       ),
       '2c': getAspAndJustScore(
-        parseInt(grades.pregunta6p3.aspecto || 0),
+        subs07Obj['2c'],
         parseInt(grades.pregunta6p3.justificacion || 0),
       ),
     },
-    subs12: {
+    sub12: {
       '1a': 0,
       '1b': 0,
       '1c': 0,
@@ -191,49 +256,94 @@ export async function setStudentGrades(id, grades) {
       '2b': parseInt(grades.pregunta5.identificacion || 0),
       '2c': 0,
     },
-    subs13: {
+    sub13: {
       '1a': getSub13Escenary1Score(
         student.data.pregunta1,
-        parseInt(grades.pregunta1.aspecto || 0),
+        subs07Obj['1a'],
       ),
       '1b': getSub13Escenary1Score(
         student.data.pregunta2,
-        parseInt(grades.pregunta2.aspecto || 0),
+        subs07Obj['1b'],
       ),
       '1c': getSub13Escenary1Score(
         student.data.pregunta3,
-        parseInt(grades.pregunta3.aspecto || 0),
+        subs07Obj['1c'],
       ),
       '2a':
-        [3, 4, 5].includes(parseInt(grades.pregunta4.aspecto || 0)) &&
-        student.data.pregunta4.errores <= 2 &&
-        student.data.pregunta4.cumplio === 'T'
+        [3, 4, 5].includes(subs07Obj['2a']) &&
+        student.data.pregunta4[0].errores <= 2 &&
+        student.data.pregunta4[0].cumplio === 'si'
           ? 5
-          : [3, 4, 5].includes(parseInt(grades.pregunta4.aspecto || 0)) &&
-            student.data.pregunta4.cumplio === 'T' &&
-            student.data.pregunta4.errores > 2
+          : [3, 4, 5].includes(subs07Obj['2a']) &&
+            student.data.pregunta4[0].cumplio === 'si' &&
+            student.data.pregunta4[0].errores > 2
           ? 3
-          : [3, 4, 5].includes(parseInt(grades.pregunta4.aspecto || 0))
+          : [3, 4, 5].includes(subs07Obj['2a']) // TODO: Patrón descubierto o no o solo Aspectos importantes lleno ?
           ? 1
           : 0,
       '2b':
-        [3, 4, 5].includes(parseInt(grades.pregunta5.aspecto || 0)) &&
-        student.data.pregunta4.cumplio === 'si' &&
-        student.data.pregunta4.errores === 0
+        [3, 4, 5].includes(subs07Obj['2b']) &&
+        student.data.pregunta5[0].cumplio === 'si' &&
+        student.data.pregunta5[0].errores === 0
           ? 5
-          : student.data.pregunta4.cumplio === 'si' &&
-            student.data.pregunta4.errores >= 0
+          : student.data.pregunta5[0].cumplio === 'si' &&
+            student.data.pregunta5[0].errores >= 0
           ? 3
           : 1,
-      '2c': parseInt(grades.pregunta6p3.aspecto || 0),
+      '2c': 
+        [3, 4, 5].includes(subs07Obj['2c']) &&
+        student.data.pregunta6[0].cumplio === 'si' && 
+        student.data.pregunta6p2[0].cumplio === 'si' && 
+        student.data.pregunta6p3[0].optima === 'si' 
+          ? 5 
+          : [3, 4, 5].includes(subs07Obj['2c']) &&
+            (student.data.pregunta6[0].cumplio === 'si' ||
+            student.data.pregunta6p2[0].cumplio === 'si')
+          ? 3
+          : 1,
     },
-    subs14: {
+    sub14: {
       '1a': 0,
-      '1b': parseInt(grades.pregunta2.justificacion || 0),
-      '1c': parseInt(grades.pregunta3.justificacion || 0),
-      '2a': parseInt(grades.pregunta4.justificacion || 0),
-      '2b': parseInt(grades.pregunta5.justificacion || 0),
-      '2c': parseInt(grades.pregunta6p3.justificacion || 0),
+      '1b': 
+        parseInt(grades.pregunta2.justificacion || 0) === 5 &&
+        student.data.pregunta2.find(({ solucion }) => solucion === 'solucion').cumplio === 'T' 
+          ? 5 
+          : (parseInt(grades.pregunta2.justificacion || 0) === 3 || parseInt(grades.pregunta2.justificacion || 0) === 1) &&
+            student.data.pregunta2.find(({ solucion }) => solucion === 'solucion').cumplio === 'T'
+          ? 3
+          : 1,
+      '1c': 
+        parseInt(grades.pregunta3.justificacion || 0) === 5 &&
+        student.data.pregunta3.find(({ solucion }) => solucion === 'solucion').cumplio === 'T' 
+          ? 5 
+          : (parseInt(grades.pregunta3.justificacion || 0) === 3 || parseInt(grades.pregunta3.justificacion || 0) === 1) &&
+            student.data.pregunta3.find(({ solucion }) => solucion === 'solucion').cumplio === 'T'
+          ? 3
+          : 1,
+      '2a': 
+        parseInt(grades.pregunta4.justificacion || 0) === 5 &&
+        student.data.pregunta4[0].cumplio === 'si' 
+          ? 5 
+          : (parseInt(grades.pregunta4.justificacion || 0) === 3 || parseInt(grades.pregunta4.justificacion || 0) === 1) &&
+          student.data.pregunta4[0].cumplio === 'si'
+          ? 3
+          : 1,
+      '2b':
+        parseInt(grades.pregunta5.justificacion || 0) === 5 &&
+        student.data.pregunta5[0].cumplio === 'si' 
+          ? 5 
+          : (parseInt(grades.pregunta5.justificacion || 0) === 3 || parseInt(grades.pregunta5.justificacion || 0) === 1) &&
+          student.data.pregunta5[0].cumplio === 'si'
+          ? 3
+          : 1,
+      '2c': 
+        parseInt(grades.pregunta6p3.justificacion || 0) === 5 &&
+        student.data.pregunta6p3[0].cumplio === 'si' 
+          ? 5 
+          : (parseInt(grades.pregunta6p3.justificacion || 0) === 3 || parseInt(grades.pregunta6p3.justificacion || 0) === 1) &&
+          student.data.pregunta6p3[0].cumplio === 'si'
+          ? 3
+          : 1,
     },
   };
   await setDoc(

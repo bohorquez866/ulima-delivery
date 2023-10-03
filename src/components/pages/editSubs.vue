@@ -52,9 +52,6 @@
           </slide>
         </carousel>
       </div>
-      <button @click="onSave">
-        <div>{{ loading ? 'Guardando...' : 'Guardar' }}</div>
-      </button>
     </div>
     <div class="section__container">
       <h3>Justificación</h3>
@@ -87,9 +84,6 @@
           </slide>
         </carousel>
       </div>
-      <button @click="onSave">
-        <div>{{ loading ? 'Guardando...' : 'Guardar' }}</div>
-      </button>
     </div>
     <div class="section__container">
       <h3>Identificación</h3>
@@ -122,10 +116,10 @@
           </slide>
         </carousel>
       </div>
-      <button @click="onSave">
-        <div>{{ loading ? 'Guardando...' : 'Guardar' }}</div>
-      </button>
     </div>
+    <button @click="onSave" style="margin-top: 15px;">
+      <div>{{ loading ? 'Guardando...' : 'Guardar' }}</div>
+    </button>
   </div>
 </template>
 
