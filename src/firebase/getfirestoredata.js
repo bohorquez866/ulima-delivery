@@ -125,6 +125,7 @@ function getAspAndJustScore(asp, just) {
 }
 
 function getSub13Escenary1Score(answers, asp) {
+  if (answers == undefined) return 0;
   let solution = answers.find(({ solucion }) => solucion === 'solucion');
   // let isSolved = answers.filter(({ cumplio }) => cumplio === 'T').length > 0; // TODO: Preguntar si es que la sol debe haber sido seleccionada como "solucion"
   // let borradores = answers.length;
@@ -136,7 +137,7 @@ function getSub13Escenary1Score(answers, asp) {
   if (solution) {
     return solution.cumplio === "T" && drafts >= 2 && mistakes === 0 && isAspFull
     ? 5
-    : drafts <= 1 && solution.cumplio === "T" && mistakes >= 0
+    : drafts <= 1 && solution.cumplio === "T" && mistakes > 0
     ? 3
     : solution.cumplio === "T"
     ? 1
@@ -408,19 +409,21 @@ export async function getListStudents() {
       if (item.admin === undefined) {
         studentList.push(docu.data());
         //console.log(typeof doc.data());
-        try {
-          setEmail(docu.id);
-          setSub01(docu.id);
-          setSub02(docu.id);
-          setSub03(docu.id);
-          setSub04(docu.id);
-          setSub05(docu.id);
-          setSub06(docu.id);
-          setSub09(docu.id);
-          setSub10(docu.id);
-          // sumTotalResults(docu.id);
-        } catch (error) {
-          console.log(error);
+        if(tempArray) {
+          try {
+            setEmail(docu.id);
+            setSub01(docu.id);
+            setSub02(docu.id);
+            setSub03(docu.id);
+            setSub04(docu.id);
+            setSub05(docu.id);
+            setSub06(docu.id);
+            setSub09(docu.id);
+            setSub10(docu.id);
+            // sumTotalResults(docu.id);
+          } catch (error) {
+            console.log(error);
+          }
         }
       }
     }
