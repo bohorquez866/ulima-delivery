@@ -155,7 +155,13 @@ export default {
   methods: {
     async onSave() {
       this.loading = true;
-      await setStudentGrades(this.student.email, this.student.grades);
+      try {
+        console.log(this.student.email, this.student.grades);
+        await setStudentGrades(this.student.email, this.student.grades);
+      } catch (e) {
+        console.log(e);
+        this.loading = false;
+      }
       this.loading = false;
     },
   },
