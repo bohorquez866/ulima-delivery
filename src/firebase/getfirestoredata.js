@@ -48,20 +48,20 @@ export async function getListStudentsAllAnswers() {
 export async function setScoresBySubs() {
   const querySnapshot = await getDocs(collection(db, 'subs'));
   let subsInfo = {
-    AE1: [5, 0.05],
-    AE2: [3, 0.06],
-    AE3: [6, 0.02],
-    AE4: [3, 0.06],
-    AE5: [2, 0.03],
-    AE6: [2, 0.05],
-    AE7: [6, 0.07],
-    AE8: [4, 0.04],
-    AE9: [5, 0.06],
-    AE10: [5, 0.03],
-    AE11: [5, 0.05],
-    AE12: [2, 0.14],
-    AE13: [6, 0.18],
-    AE14: [5, 0.14],
+    AE1: [5, 0.0513],
+    AE2: [3, 0.0627],
+    AE3: [6, 0.0233],
+    AE4: [2, 0.05825],
+    AE5: [2, 0.03495],
+    AE6: [2, 0.0466],
+    AE7: [6, 0.0699],
+    AE8: [4, 0.043425],
+    AE9: [5, 0.062725],
+    AE10: [5, 0.033775],
+    AE11: [5, 0.053075],
+    AE12: [2, 0.138],
+    AE13: [6, 0.184],
+    AE14: [5, 0.138],
   };
 
   let subs = {
@@ -92,7 +92,7 @@ export async function setScoresBySubs() {
           (Object.values(item[sub] || {}).reduce((a, b) => a + b, 0) /
             subsInfo[subs[sub]][0]) *
           subsInfo[subs[sub]][1]
-        ).toFixed(2),
+        ).toFixed(3),
       );
     });
     scores.creatividad = scores.AE1 + (scores.AE2 || 0);
