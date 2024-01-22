@@ -20,12 +20,13 @@ import {
 } from './getSubScores';
 
 export async function getFirebaseData() {
-  const userUid = auth.currentUser.uid;
-
-  const docRef = doc(db, 'users', userUid);
+  // const userUid = auth.currentUser.uid; // This didn't work. Changed to email instead
+  const userEmail = auth.currentUser.email;
+  const docRef = doc(db, 'users', userEmail);
   const docSnap = await getDoc(docRef);
+  const isAdmin = docSnap.get('admin');
 
-  return docSnap.get('admin');
+  return isAdmin;
 }
 
 export async function getListStudentsAllAnswers() {
