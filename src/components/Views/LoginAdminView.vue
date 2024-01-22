@@ -7,7 +7,7 @@
       <input class="email_input" type="password" placeholder="Password" v-model="password" />
       <p class="errorMessage">{{ error }}</p>
 
-      <button class="btn_model" type="submit">Empezar</button>
+      <button class="btn_model" type="submit">{{isCheckingLogin ? 'Ingresando...': 'Empezar'}}</button>
     </form>
 
     <div class="right-box">
@@ -100,11 +100,14 @@ export default {
       error: "",
       email: "",
       password: "",
+      isCheckingLogin: false,
     };
   },
 
   methods: {
     async login() {
+      this.isCheckingLogin = true;
+
       var isLogged = false;
       var isAdmin = false;
       if (!this.email || !this.password) {
@@ -112,14 +115,30 @@ export default {
         setTimeout(() => {
           this.error = "";
         }, 1500);
+
+        this.isCheckingLogin = false;
         return;
       }
       setPersistence(auth, browserLocalPersistence).then(() => {
         signInWithEmailAndPassword(auth, this.email, this.password)
-          .then(() => {
+        .then(() => {
             isLogged = true;
+            getFirebaseData().then((value) => {
+              if(value) {
+                isAdmin = true;
+              }
+              if(isLogged && isAdmin){
+                this.isCheckingLogin = false;
+                this.$router.replace({ name: "ManagePage" });
+              }
+            })
+            .catch((error) => {
+              this.isCheckingLogin = false;
+              console.log('error on login-admin', error)
+            });
           })
           .catch((error) => {
+            this.isCheckingLogin = false;
             switch (error.code) {
               case "auth/user-not-found":
                 console.log(error);
@@ -141,12 +160,6 @@ export default {
             }
           });
       });
-
-      isAdmin = await getFirebaseData();
-      if(isLogged && isAdmin){
-        this.$router.replace({ name: "ManagePage" });
-      }
-
     },
   },
 };
