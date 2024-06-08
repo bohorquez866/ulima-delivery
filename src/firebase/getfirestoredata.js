@@ -7,17 +7,6 @@ import {
   updateDoc,
 } from 'firebase/firestore';
 import { db, auth } from '../firebase/configFirebase';
-import {
-  setSub01,
-  setSub02,
-  setSub03,
-  setSub04,
-  setSub05,
-  setSub06,
-  setSub09,
-  setSub10,
-  // sumTotalResults,
-} from './getSubScores';
 
 export async function getFirebaseData() {
   // const userUid = auth.currentUser.uid; // This didn't work. Changed to email instead
@@ -44,79 +33,6 @@ export async function getListStudentsAllAnswers() {
   });
   console.log('Lenght => ', studentList.length);
   return studentList;
-}
-
-export async function setScoresBySubs() {
-  const querySnapshot = await getDocs(collection(db, 'subs'));
-  let subsInfo = {
-    AE1: [5, 0.0513],
-    AE2: [3, 0.0627],
-    AE3: [6, 0.0233],
-    AE4: [2, 0.05825],
-    AE5: [2, 0.03495],
-    AE6: [2, 0.0466],
-    AE7: [6, 0.0699],
-    AE8: [4, 0.043425],
-    AE9: [5, 0.062725],
-    AE10: [5, 0.033775],
-    AE11: [5, 0.053075],
-    AE12: [2, 0.138],
-    AE13: [6, 0.184],
-    AE14: [5, 0.138],
-  };
-
-  let subs = {
-    sub01: 'AE1',
-    sub02: 'AE2',
-    sub03: 'AE3',
-    sub04: 'AE4',
-    sub05: 'AE5',
-    sub06: 'AE6',
-    sub07: 'AE7',
-    sub08: 'AE8',
-    sub09: 'AE9',
-    sub10: 'AE10',
-    sub11: 'AE11',
-    sub12: 'AE12',
-    sub13: 'AE13',
-    sub14: 'AE14',
-  };
-
-  let studentListScores = {};
-  querySnapshot.forEach(async (docItem) => {
-    let scores = {};
-    var item = docItem.data();
-    studentListScores[docItem.id] = {};
-    Object.keys(subs).forEach((sub) => {
-      scores[subs[sub]] = parseFloat(
-        (
-          (Object.values(item[sub] || {}).reduce((a, b) => a + b, 0) /
-            subsInfo[subs[sub]][0]) *
-          subsInfo[subs[sub]][1]
-        ).toFixed(3),
-      );
-    });
-    scores.creatividad = scores.AE1 + (scores.AE2 || 0);
-    scores.pensAlg =
-      scores.AE3 + scores.AE4 + scores.AE5 + scores.AE6 + (scores.AE7 || 0);
-    scores.pensCrit =
-      (scores.AE8 || 0) + scores.AE9 + scores.AE10 + (scores.AE11 || 0);
-    scores.ResProbl =
-      (scores.AE12 || 0) + (scores.AE13 || 0) + (scores.AE14 || 0);
-    scores.CT =
-      scores.creatividad + scores.pensAlg + scores.pensCrit + scores.ResProbl;
-    studentListScores[docItem.id] = scores;
-
-    const subsRef = doc(db, 'users', docItem.id);
-    await setDoc(
-      subsRef,
-      {
-        scores,
-      },
-      { merge: true },
-    );
-  });
-  return studentListScores;
 }
 
 function getAspAndJustScore(asp, just) {
@@ -355,7 +271,8 @@ export async function setStudentGrades(id, grades) {
     },
     { merge: true },
   );
-
+  console.log("Grades saved")
+  
   await setDoc(
     subsRef,
     {
@@ -363,6 +280,82 @@ export async function setStudentGrades(id, grades) {
     },
     { merge: true },
   );
+  console.log("subs saved")
+}
+
+export async function setScoresBySubs() {
+  const querySnapshot = await getDocs(collection(db, 'subs'));
+  let subsInfo = {
+    AE1: [5, 0.0513],
+    AE2: [3, 0.0627],
+    AE3: [6, 0.0233],
+    AE4: [2, 0.05825],
+    AE5: [2, 0.03495],
+    AE6: [2, 0.0466],
+    AE7: [6, 0.0699],
+    AE8: [4, 0.043425],
+    AE9: [5, 0.062725],
+    AE10: [5, 0.033775],
+    AE11: [5, 0.053075],
+    AE12: [2, 0.138],
+    AE13: [6, 0.184],
+    AE14: [5, 0.138],
+  };
+
+  let subs = {
+    sub01: 'AE1',
+    sub02: 'AE2',
+    sub03: 'AE3',
+    sub04: 'AE4',
+    sub05: 'AE5',
+    sub06: 'AE6',
+    sub07: 'AE7',
+    sub08: 'AE8',
+    sub09: 'AE9',
+    sub10: 'AE10',
+    sub11: 'AE11',
+    sub12: 'AE12',
+    sub13: 'AE13',
+    sub14: 'AE14',
+  };
+
+  let studentListScores = {};
+  querySnapshot.forEach(async (docItem) => {
+    let scores = {};
+    var item = docItem.data();
+    // studentListScores[docItem.id] = {};
+    Object.keys(subs).forEach((sub) => {
+      scores[subs[sub]] = parseFloat(
+        (
+          (Object.values(item[sub] || {}).reduce((a, b) => a + b, 0) /
+            subsInfo[subs[sub]][0]) *
+          subsInfo[subs[sub]][1]
+        ).toFixed(3),
+      );
+    });
+    scores.creatividad = scores.AE1 + (scores.AE2 || 0);
+    scores.pensAlg =
+      scores.AE3 + scores.AE4 + scores.AE5 + scores.AE6 + (scores.AE7 || 0);
+    scores.pensCrit =
+      (scores.AE8 || 0) + scores.AE9 + scores.AE10 + (scores.AE11 || 0);
+    scores.ResProbl =
+      (scores.AE12 || 0) + (scores.AE13 || 0) + (scores.AE14 || 0);
+    scores.CT =
+      scores.creatividad + scores.pensAlg + scores.pensCrit + scores.ResProbl;
+    studentListScores[docItem.id] = scores;
+
+    // console.log('scores', scores)
+
+    const subsRef = doc(db, 'users', docItem.id);
+    await setDoc(
+      subsRef,
+      {
+        scores,
+      },
+      { merge: true },
+    );
+  });
+  return studentListScores;
 }
 
 export async function getListStudents() {
@@ -373,62 +366,14 @@ export async function getListStudents() {
     var item = docu.data();
     var tempArray = item.data;
 
-    // var dict = {
-    //   '1a': 0,
-    //   '1b': 0,
-    //   '1c': 0,
-    //   '2a': 0,
-    //   '2b': 0,
-    //   '2c': 0,
-    // };
-
-    // let subs = {
-    //   sub01: dict,
-    //   sub02: dict,
-    //   sub03: dict,
-    //   sub04: dict,
-    //   sub05: dict,
-    //   sub06: dict,
-    //   sub07: dict,
-    //   sub08: dict,
-    //   sub09: dict,
-    //   sub10: dict,
-    //   sub11: dict,
-    //   sub12: dict,
-    //   sub13: dict,
-    //   sub14: dict,
-    // };
-    // const subsRef = doc(db, 'subs', docu.id);
-    // await setDoc(
-    //   subsRef,
-    //   {
-    //     subs,
-    //   },
-    //   { merge: true },
-    // );
     if (typeof tempArray != 'undefined') {
       if (item.admin === undefined) {
         studentList.push(docu.data());
-        //console.log(typeof doc.data());
-        if(tempArray) {
-          try {
-            setEmail(docu.id);
-            setSub01(docu.id);
-            setSub02(docu.id);
-            setSub03(docu.id);
-            setSub04(docu.id);
-            setSub05(docu.id);
-            setSub06(docu.id);
-            setSub09(docu.id);
-            setSub10(docu.id);
-            // sumTotalResults(docu.id);
-          } catch (error) {
-            console.log(error);
-          }
-        }
       }
     }
   });
+  
+  console.log("studentList", studentList)
   console.log('Lenght => ', studentList.length);
   return studentList;
 }

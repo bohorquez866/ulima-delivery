@@ -26,7 +26,7 @@
       <tbody>
         <tr
           v-for="item in students"
-          :key="item.name"
+          :key="item.email"
         >
           <td>{{ item.name }}</td>
           <td>{{ item.age }}</td>
@@ -80,12 +80,10 @@ import {
   getListStudents,
   setScoresBySubs,
 } from '../../firebase/getfirestoredata';
-// import dialogStudent from '../pages/dialogStudent.vue';
 
 export default {
   props: {},
   components: {
-    // dialogStudent,
   },
   data() {
     return {

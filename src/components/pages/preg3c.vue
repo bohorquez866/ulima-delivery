@@ -11,9 +11,7 @@
       <p class="ver_sc part">Esta pregunta tiene tres partes: 3/3</p>
       <div class="modal" v-if="modalIsActive">
         <div class="submodal">
-          <congratulations setModal="setModal">
-            <button class="btn_model close_btn" @click="salir">Finalizar</button>
-          </congratulations>
+          <congratulations setModal="setModal" />
         </div>
       </div>
 
@@ -244,9 +242,6 @@ export default {
         this.pressedP = false;
         this.pressedM = true;
       }
-    },
-    salir() {
-      window.location.href = "/";
     },
     validarSolucion() {
       if (this.eleccion == "pacman") {
