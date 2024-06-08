@@ -5,14 +5,25 @@
     <div class="images">
       <div>
         <img
+          v-if="!processing"
           class="img_table"
           src="../../assets/complete-31-128.png"
           alt="Finish"
         />
+        <img 
+          v-else 
+          class="img_table"
+          src="https://discuss.wxpython.org/uploads/default/original/2X/6/6d0ec30d8b8f77ab999f765edd8866e8a97d59a3.gif"
+          alt="Processing..."
+        >
       </div>
     </div>
 
-    <slot></slot>
+    <!-- <slot></slot> -->
+    <button v-if="!processing" class="btn_model close_btn" @click="salir">Finalizar</button>
+    <p v-else>Procesando tus respuestas, espere por favor...</p>
+
+    <p v-if="error" style="color: red;">Error: {{ error }}</p>
   </div>
 </template>
 <script>
@@ -31,16 +42,41 @@ const { GoogleSpreadsheet } = require('google-spreadsheet');
 
   await doc.loadInfo(); // loads document properties and worksheets
 })();
-import { setDefaultSubs } from '../../firebase/saveFirebaseData';
+import { setDefaultSubs, processSubs } from '../../firebase/saveFirebaseData';
 export default {
-  data: () => ({}),
+  data() {
+    return {
+      processing: true,
+      error: undefined,
+      messages: {
+        noError: "Cambios guardados satisfactoriamente", 
+        defaultError: "Hubo un error al guardar los cambios"
+      },
+    }
+  },
+
+  methods: {
+    salir() {
+      window.location.href = "/";
+    },
+  },
 
   computed: {},
 
   watch: {},
 
   async mounted() {
-    await setDefaultSubs();
+    try {
+      await setDefaultSubs();
+      await processSubs();
+      this.processing = false;
+    } catch (e) {
+      console.log(e)
+      this.error = `${this.messages.defaultError}. ${e}`
+      setTimeout(() => {
+        this.error = undefined
+      }, 8000);
+    }
   },
 };
 </script>

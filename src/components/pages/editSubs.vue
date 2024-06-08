@@ -120,6 +120,7 @@
     <button @click="onSave" style="margin-top: 15px;">
       <div>{{ loading ? 'Guardando...' : 'Guardar' }}</div>
     </button>
+    <span v-if="saveError" class="ml-4" :style="saveError.value ? 'color: red;' : 'color: green;'">{{saveError.message}}</span>
   </div>
 </template>
 
@@ -138,6 +139,11 @@ export default {
   data() {
     return {
       loading: false,
+      messages: {
+        noError: "Cambios guardados satisfactoriamente", 
+        defaultError: "Hubo un error al guardar los cambios"
+      },
+      saveError: undefined,
       student: {},
       questions: [
         'pregunta1',
@@ -158,9 +164,16 @@ export default {
       try {
         console.log(this.student.email, this.student.grades);
         await setStudentGrades(this.student.email, this.student.grades);
+        this.saveError = {value: false, message: `${this.messages.noError}`}
+        setTimeout(() => {
+          this.saveError = undefined
+        }, 3500);
       } catch (e) {
         console.log(e);
-        this.loading = false;
+        this.saveError = {value: true, message: `${this.messages.defaultError}. ${e}`}
+        setTimeout(() => {
+          this.saveError = undefined
+        }, 8000);
       }
       this.loading = false;
     },

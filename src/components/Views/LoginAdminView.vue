@@ -109,7 +109,6 @@ export default {
       this.isCheckingLogin = true;
 
       var isLogged = false;
-      var isAdmin = false;
       if (!this.email || !this.password) {
         this.error = "Por favor, ingresa tu email y contraseña";
         setTimeout(() => {
@@ -124,10 +123,8 @@ export default {
         .then(() => {
             isLogged = true;
             getFirebaseData().then((value) => {
-              if(value) {
-                isAdmin = true;
-              }
-              if(isLogged && isAdmin){
+              if(value && isLogged) {
+                // is administrator
                 this.isCheckingLogin = false;
                 this.$router.replace({ name: "ManagePage" });
               }
@@ -141,13 +138,14 @@ export default {
             this.isCheckingLogin = false;
             switch (error.code) {
               case "auth/user-not-found":
-                console.log(error);
+                console.log("auth/user-not-found", error);
                 this.error = "Usuario no encontrado";
                 setTimeout(() => {
                   this.error = "";
                 }, 2000);
                 break;
               case "auth/wrong-password":
+                console.log("auth/wrong-password", error);
                 this.error = "Contraseña incorrecta";
                 setTimeout(() => {
                   this.error = "";
@@ -155,6 +153,7 @@ export default {
                 break;
 
               default:
+                console.log("auth/default", error);
                 this.error = "Ha ocurrido un error";
                 break;
             }
