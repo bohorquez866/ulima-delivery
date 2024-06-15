@@ -4,18 +4,27 @@ import {
   getFirestore,
   setDoc,
   updateDoc,
-} from 'firebase/firestore';
-import { getAuth } from 'firebase/auth';
-import { db } from './configFirebase';
-import { setEmail } from './getfirestoredata';
-import { setSub01, setSub02, setSub03, setSub04, setSub05, setSub06, setSub09, setSub10 } from './getSubScores';
+} from "firebase/firestore";
+import { getAuth } from "firebase/auth";
+import { db } from "./configFirebase";
+import { setEmail } from "./getfirestoredata";
+import {
+  setSub01,
+  setSub02,
+  setSub03,
+  setSub04,
+  setSub05,
+  setSub06,
+  setSub09,
+  setSub10,
+} from "./getSubScores";
 
 export const saveFirebaseData = (data) => {
   const db = getFirestore();
   const auth = getAuth();
 
   const userEmail = auth.currentUser.email;
-  const docUserRef = doc(db, 'users', userEmail);
+  const docUserRef = doc(db, "users", userEmail);
 
   setDoc(docUserRef, { data }, { merge: true });
 };
@@ -25,34 +34,35 @@ export async function setDefaultSubs() {
   const item_id = auth.currentUser.email;
 
   let questions = {
-    '1a': 0,
-    '1b': 0,
-    '1c': 0,
-    '2a': 0,
-    '2b': 0,
-    '2c': 0,
+    "1a": 0,
+    "1b": 0,
+    "1c": 0,
+    "2a": 0,
+    "2b": 0,
+    "2c": 0,
   };
   let defaultSubs = {};
 
   for (let index = 1; index <= 14; index++) {
-    defaultSubs[`sub${index < 10 ? 0 : ''}${index}`] = questions;
+    defaultSubs[`sub${index < 10 ? 0 : ""}${index}`] = questions;
   }
-  
-  await setDoc(doc(db, 'subs', item_id), defaultSubs, { merge: true });
+
+  await setDoc(doc(db, "subs", item_id), defaultSubs, { merge: true });
+  console.log("subs back to default");
 }
 
 export async function processSubs() {
   const auth = getAuth();
   const userEmail = auth.currentUser.email;
-  const subsRef = doc(db, 'subs', userEmail);
+  const subsRef = doc(db, "subs", userEmail);
 
-  const docUserRef = doc(db, 'users', userEmail);
+  const docUserRef = doc(db, "users", userEmail);
   const docSnap = await getDoc(docUserRef);
-  const data = docSnap.get('data');
+  const data = docSnap.get("data");
 
   await setEmail(userEmail);
 
-  await updateDoc(doc(db, 'users', userEmail), {
+  await updateDoc(doc(db, "users", userEmail), {
     process: true,
   });
 
@@ -65,13 +75,14 @@ export async function processSubs() {
     sub06: setSub06(data),
     sub09: setSub09(data),
     sub10: setSub10(data),
-  }
+  };
 
   await setDoc(
     subsRef,
     {
       ...subs,
     },
-    { merge: true },
+    { merge: true }
   );
+  console.log("subs procesados y guardados");
 }
